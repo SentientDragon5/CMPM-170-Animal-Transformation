@@ -33,11 +33,13 @@ public class HumanoidController : GenericMoveController
     protected bool CheckGrounded(out Vector3 normal)
     {
         normal = Vector3.zero;
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 0.1f, enviromentLayer))
+        if (Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, out RaycastHit hit, 0.2f, enviromentLayer))
         {
+            Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * 0.2f, Color.green);
             normal = hit.normal;
             return true;
         }
+        Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * 0.2f, Color.red);
         return false;
     }
 }
