@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 396963646993962421}
   - component: {fileID: 7725430420581994638}
   - component: {fileID: 4917471500688234313}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Humanoid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 5950239645209403690}
   - component: {fileID: 7896128391560682895}
   - component: {fileID: 1078790325231873169}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
