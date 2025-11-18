@@ -24,7 +24,13 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        movementControllers[moveState].Enter();
+        for (int i = 0; i < movementControllers.Count; i++)
+        {
+            if (i==moveState)
+                movementControllers[moveState].Enter();
+            else
+                movementControllers[i].Exit();
+        }
     }
 
     void OnEnable()
