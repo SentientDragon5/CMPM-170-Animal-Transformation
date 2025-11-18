@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
             playerInput.actions[actionName].performed += (InputAction.CallbackContext context) => SwitchState(moveIndex);
             playerInput.actions[actionName].Enable();
         }
-        
+        Cursor.lockState = CursorLockMode.Locked; // Move this later!
     }
     void OnDisable()
     {
@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
             playerInput.actions[actionName].performed -= (InputAction.CallbackContext context) => SwitchState(moveIndex);
             playerInput.actions[actionName].Disable();
         }
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Jump(InputAction.CallbackContext callbackContext) => movementControllers[moveState].JumpAction();
