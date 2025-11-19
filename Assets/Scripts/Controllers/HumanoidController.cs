@@ -27,6 +27,7 @@ public class HumanoidController : GenericMoveController
     public override void Move(Vector3 moveInput)
     {
         // called on update, so we use this to move the player
+        // first we take the movement input from player 
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.z);
 
         if (move.magnitude > 1f) move.Normalize();
@@ -45,45 +46,57 @@ public class HumanoidController : GenericMoveController
         
         if (grounded)
         {
+            // set the players velocity to the move input * speed
             rb.linearVelocity = move * moveSpeed;
+            // decide whether to move with a standing speed or the moving speed
             float turnSpeed = Mathf.Lerp(standingTurnSpeed, movingTurnSpeed, move.magnitude);
+            // rotate player by turn
             rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * turnSpeed * Time.deltaTime, Vector3.up));
         }
         else
         {
             move.y = rb.linearVelocity.y;
+            // add gravity to our velocity
             rb.linearVelocity += gravityScale * Physics.gravity * Time.deltaTime;
+            // slowly air strafe in a controlled way
             rb.linearVelocity = Vector3.MoveTowards(rb.linearVelocity, move * airSpeed, airControl * moveInput.magnitude);
+            // rotate the player by turn amount
             rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
-            // rb.transform.Rotate(0,,0);
         }
     }
 
+    // called by the player controller when the jump input is pressed
     public override void JumpAction()
     {
-        if (CheckGrounded(out Vector3 normal))
+        // only jump if on the ground
+        if (CheckGrounded(out Vector3 normal) && (Time.time - lastJumpTime > jumpMinTime))
         {
             lastJumpTime = Time.time;
             rb.linearVelocity += normal * jumpSpeed;
         }
     }
 
+    // this function gets whether the player is grounded. if so it also gives the normal of the ground, otherwise it gives Vector3.zero
     protected bool CheckGrounded(out Vector3 normal)
     {
+        // default normal direction
         normal = Vector3.zero;
+
+        // If we just jumped, we know we are not on the ground. 
         if (Time.time - lastJumpTime < jumpMinTime)
         {
-            Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * 0.2f, Color.white);
+            Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.white);
             return false;
         }
-        
-        if (Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, out RaycastHit hit, 0.2f, enviromentLayer))
+
+        // check to see if the ground below us is there, if so also return the normal
+        if (Physics.Raycast(transform.position + Vector3.up * groundingDistance/2f, Vector3.down, out RaycastHit hit, groundingDistance, enviromentLayer))
         {
-            Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * 0.2f, Color.green);
+            Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.green);
             normal = hit.normal;
             return true;
         }
-        Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * 0.2f, Color.red);
+        Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.red);
         return false;
     }
 }
