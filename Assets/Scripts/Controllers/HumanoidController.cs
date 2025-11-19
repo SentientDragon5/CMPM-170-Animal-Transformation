@@ -2,9 +2,19 @@ using UnityEngine;
 
 public class HumanoidController : GenericMoveController
 {    
+    [Header("Walking")]
     public float moveSpeed = 5;
-    public float jumpSpeed = 10;
+
+    [Header("Jumping")]
+    public float jumpSpeed = 20;
+    public float jumpMinTime = 0.2f;
+
+    [Header("Grounding")]
     public LayerMask enviromentLayer = 128; // layer 7 so 2 ^ 7
+    public float groundingDistance = 0.1f;
+
+    
+    float lastJumpTime;
 
     public override void Move(Vector3 moveInput)
     {
@@ -18,7 +28,7 @@ public class HumanoidController : GenericMoveController
         }
         else
         {
-            rb.linearVelocity += Physics.gravity;
+            rb.linearVelocity += Physics.gravity * Time.deltaTime;
         }
     }
 
@@ -26,13 +36,20 @@ public class HumanoidController : GenericMoveController
     {
         if (CheckGrounded(out Vector3 normal))
         {
-            rb.linearVelocity += Vector3.up * jumpSpeed;
+            lastJumpTime = Time.time;
+            rb.linearVelocity += normal * jumpSpeed;
         }
     }
 
     protected bool CheckGrounded(out Vector3 normal)
     {
         normal = Vector3.zero;
+        if (Time.time - lastJumpTime < jumpMinTime)
+        {
+            Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * 0.2f, Color.white);
+            return false;
+        }
+        
         if (Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, out RaycastHit hit, 0.2f, enviromentLayer))
         {
             Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * 0.2f, Color.green);
