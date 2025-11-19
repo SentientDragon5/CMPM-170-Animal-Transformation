@@ -111,8 +111,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6890809993302375781}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3345789, y: 0.0000000302335, z: -0.000000010734121, w: 0.9423678}
-  m_LocalPosition: {x: 0, y: 3.25, z: -4}
+  m_LocalRotation: {x: 0.08367709, y: -0.000000033203147, z: 0.0000000027881208, w: 0.9964929}
+  m_LocalPosition: {x: 0, y: 1.4572234, z: -3.8857732}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -372,10 +372,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4195156330132781907}
     m_Modifications:
-    - target: {fileID: 242252646838122803, guid: 412c32ac599b1bc498ae5c805140d5d1, type: 3}
-      propertyPath: Target.TrackingTarget
-      value: 
-      objectReference: {fileID: 4195156330132781907}
     - target: {fileID: 396963646993962421, guid: 412c32ac599b1bc498ae5c805140d5d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
