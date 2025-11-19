@@ -9,6 +9,10 @@ public class HumanoidController : GenericMoveController
     public float jumpSpeed = 20;
     public float jumpMinTime = 0.2f;
 
+    [Header("Falling")]
+    public float airSpeed = 5;
+    public float airControl = 0.1f;
+
     [Header("Grounding")]
     public LayerMask enviromentLayer = 128; // layer 7 so 2 ^ 7
     public float groundingDistance = 0.1f;
@@ -24,11 +28,15 @@ public class HumanoidController : GenericMoveController
         if (CheckGrounded(out Vector3 normal))
         {
             Vector3 move = groundMovement * moveSpeed;
+            move.y = rb.linearVelocity.y;
             rb.linearVelocity = Vector3.ProjectOnPlane(move, normal);
         }
         else
         {
+            Vector3 move = groundMovement * airSpeed;
+            move.y = rb.linearVelocity.y;
             rb.linearVelocity += Physics.gravity * Time.deltaTime;
+            rb.linearVelocity = Vector3.MoveTowards(rb.linearVelocity, move, airControl * moveInput.magnitude);
         }
     }
 
