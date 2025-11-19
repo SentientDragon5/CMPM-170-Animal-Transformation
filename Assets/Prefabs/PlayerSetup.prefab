@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 2277815606958578434}
   - component: {fileID: 2136361817903077499}
   - component: {fileID: 6748011998831778474}
+  - component: {fileID: 1966405487046519394}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -364,6 +365,22 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!138 &1966405487046519394
+FixedJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7124043048185176559}
+  serializedVersion: 1
+  m_ConnectedBody: {fileID: 0}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!1001 &1921628420016827607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -412,9 +429,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 794959397631841431, guid: 412c32ac599b1bc498ae5c805140d5d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.226327
+      objectReference: {fileID: 0}
+    - target: {fileID: 794959397631841431, guid: 412c32ac599b1bc498ae5c805140d5d1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8691004
+      objectReference: {fileID: 0}
+    - target: {fileID: 794959397631841431, guid: 412c32ac599b1bc498ae5c805140d5d1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.284419
+      objectReference: {fileID: 0}
+    - target: {fileID: 794959397631841431, guid: 412c32ac599b1bc498ae5c805140d5d1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.17771578
+      objectReference: {fileID: 0}
+    - target: {fileID: 794959397631841431, guid: 412c32ac599b1bc498ae5c805140d5d1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0017511995
+      objectReference: {fileID: 0}
+    - target: {fileID: 794959397631841431, guid: 412c32ac599b1bc498ae5c805140d5d1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9840326
+      objectReference: {fileID: 0}
+    - target: {fileID: 794959397631841431, guid: 412c32ac599b1bc498ae5c805140d5d1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.009696592
+      objectReference: {fileID: 0}
     - target: {fileID: 6776612332121721925, guid: 412c32ac599b1bc498ae5c805140d5d1, type: 3}
       propertyPath: m_Name
-      value: Humanoid
+      value: Mouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787823429387320732, guid: 412c32ac599b1bc498ae5c805140d5d1, type: 3}
+      propertyPath: VerticalAxis.Value
+      value: 3.0838
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787823429387320732, guid: 412c32ac599b1bc498ae5c805140d5d1, type: 3}
+      propertyPath: HorizontalAxis.Value
+      value: 159.52551
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

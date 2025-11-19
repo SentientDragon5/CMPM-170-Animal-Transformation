@@ -51,7 +51,6 @@ public class HumanoidController : GenericMoveController
             rb.linearVelocity += gravityScale * Physics.gravity * Time.deltaTime;
             rb.linearVelocity = Vector3.MoveTowards(rb.linearVelocity, move * airSpeed, airControl * moveInput.magnitude);
             rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
-            // rb.transform.Rotate(0,,0);
         }
     }
 
