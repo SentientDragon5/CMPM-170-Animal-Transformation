@@ -31,12 +31,16 @@ public class HumanoidController : GenericMoveController
 
         if (move.magnitude > 1f) move.Normalize();
         move = rb.transform.InverseTransformDirection(move);
-        
+
+        // Local Space Section
         bool grounded = CheckGrounded(out Vector3 normal);
         move = Vector3.ProjectOnPlane(move, normal);
         turnAmount = Mathf.Atan2(move.x, move.z);
 
-        // go between local and world for the turn amount
+        // if you set move.x to 0, then the character will not be able to walk to the right
+        // if you set the turn speed to 0 the character will not be able to turn
+        
+        // Back to World Space
         move = rb.transform.TransformVector(move);
         
         if (grounded)
