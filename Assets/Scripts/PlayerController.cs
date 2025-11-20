@@ -11,8 +11,11 @@ public class PlayerController : MonoBehaviour
     public List<GenericMoveController> movementControllers;
     public int moveState = 0;
 
+    public List<WaterVolume> waterBodyList;
+
     void SwitchState(int newState)
     {
+        this.waterBodyList.Clear();
         Debug.Log("Switching state to " + newState);
         if (moveState == newState)
             return;
