@@ -55,11 +55,11 @@ public class HumanoidController : GenericMoveController
         }
         else
         {
-            move.y = rb.linearVelocity.y;
             // add gravity to our velocity
-            rb.linearVelocity += gravityScale * Physics.gravity * Time.deltaTime;
             // slowly air strafe in a controlled way
-            rb.linearVelocity = Vector3.MoveTowards(rb.linearVelocity, move * airSpeed, airControl * moveInput.magnitude);
+            move = Vector3.MoveTowards(rb.linearVelocity, move * airSpeed, airControl * moveInput.magnitude);
+            move.y = rb.linearVelocity.y;
+            rb.linearVelocity += gravityScale * Physics.gravity * Time.deltaTime;
             // rotate the player by turn amount
             rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
         }
