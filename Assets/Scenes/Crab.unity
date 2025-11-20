@@ -359,6 +359,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1748457580}
     m_Modifications:
+    - target: {fileID: 93989876570630947, guid: b909bbe3cddae9447b46ad100e4a7ded, type: 3}
+      propertyPath: airSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 93989876570630947, guid: b909bbe3cddae9447b46ad100e4a7ded, type: 3}
+      propertyPath: moveSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 93989876570630947, guid: b909bbe3cddae9447b46ad100e4a7ded, type: 3}
+      propertyPath: jumpMinTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 93989876570630947, guid: b909bbe3cddae9447b46ad100e4a7ded, type: 3}
+      propertyPath: standingTurnSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1918846019047728986, guid: b909bbe3cddae9447b46ad100e4a7ded, type: 3}
       propertyPath: RadialAxis.Value
       value: 1
