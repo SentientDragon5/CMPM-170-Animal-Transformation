@@ -275,11 +275,23 @@ MonoBehaviour:
     m_Bits: 16
   waterDistance: 0.3
   inWater: 0
+  Player: {fileID: 2026441685}
 --- !u!4 &2026441683 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4195156330132781907, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
   m_PrefabInstance: {fileID: 2229810841095798252}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2026441685 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2136361817903077499, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
+  m_PrefabInstance: {fileID: 2229810841095798252}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6c56a64f8735d4eb4517d435814944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1001 &2099791968
 PrefabInstance:
   m_ObjectHideFlags: 0

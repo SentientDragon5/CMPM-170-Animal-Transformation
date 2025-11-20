@@ -26,7 +26,7 @@ public class FishController : GenericMoveController
     public LayerMask waterLayer = 16; // layer 7 so 2 ^ 7
     public float waterDistance = 0.3f;
     public bool inWater = false;
-
+    public PlayerController Player;
 
     float turnAmount;
     float lastJumpTime;
@@ -42,7 +42,7 @@ public class FishController : GenericMoveController
 
         // Local Space Section
         bool grounded = CheckGrounded(out Vector3 normal);
-        bool watered = CheckWater(out Vector3 wnormal);
+        bool inWater = CheckWater();
         move = Vector3.ProjectOnPlane(move, normal);
         turnAmount = Mathf.Atan2(move.x, move.z);
 
@@ -52,11 +52,8 @@ public class FishController : GenericMoveController
         // Back to World Space
         move = rb.transform.TransformVector(move);
 
-
-        Debug.Log(inWater);
         if (inWater)
         {
-            Debug.Log("IM WET");
             // set the players velocity to the move input * speed
             rb.linearVelocity = move * moveSpeed;
             // decide whether to move with a standing speed or the moving speed
@@ -88,8 +85,14 @@ public class FishController : GenericMoveController
     // called by the player controller when the jump input is pressed
     public override void JumpAction()
     {
+
+        if (inWater)
+        {
+          // Fish Swim Up?
+        }
+
         // only jump if on the ground
-        if (CheckGrounded(out Vector3 normal) && (Time.time - lastJumpTime > jumpMinTime))
+        else if (CheckGrounded(out Vector3 normal) && (Time.time - lastJumpTime > jumpMinTime))
         {
             lastJumpTime = Time.time;
             rb.linearVelocity += normal * jumpSpeed;
@@ -119,37 +122,14 @@ public class FishController : GenericMoveController
         Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.red);
         return false;
     }
-
-    protected bool CheckWater(out Vector3 normal)
+    
+    protected bool CheckWater()
     {
-        // default normal direction
-        normal = Vector3.zero;
-
-        // check to see if the ground below us is there, if so also return the normal
-        if (Physics.Raycast(transform.position + Vector3.up * groundingDistance / 2f, Vector3.down, out RaycastHit hit, waterDistance, waterLayer))
+        if (Player.waterBodyList.Count > 0)
         {
-            Debug.DrawRay(transform.position + Vector3.up * waterDistance / 2f, Vector3.down * waterDistance, Color.green);
-            normal = hit.normal;
             return true;
         }
-        Debug.DrawRay(transform.position + Vector3.up * waterDistance / 2f, Vector3.down * waterDistance, Color.red);
         return false;
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.layer == 4) // or whatever your water layer is
-            inWater = true;
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.layer == 4)
-            inWater = true;
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.layer == 4)
-            inWater = false;
     }
 
 }
