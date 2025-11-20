@@ -54,6 +54,7 @@ public class FishController : GenericMoveController
 
         if (inWater)
         {
+            
             // set the players velocity to the move input * speed
             rb.linearVelocity = move * moveSpeed;
             // decide whether to move with a standing speed or the moving speed
