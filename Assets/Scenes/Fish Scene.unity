@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 668489091}
   - component: {fileID: 668489090}
   - component: {fileID: 668489093}
+  - component: {fileID: 668489094}
   m_Layer: 4
   m_Name: Water
   m_TagString: Untagged
@@ -243,6 +244,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccbfebfe6e311e43bc9a5604d65a59f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaterVolume
+--- !u!114 &668489094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668489088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 9c32ba6dea08518458ebe44a8e424a47, type: 2}
 --- !u!4 &1196420257 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8618246951447773342, guid: a8b4b680fadc5b346828b46a6902daa1, type: 3}
@@ -497,6 +515,10 @@ PrefabInstance:
     - target: {fileID: 531010364309697661, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.30913427
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680581568821734019, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
+      propertyPath: m_VolumeLayerMask.m_Bits
+      value: 273
       objectReference: {fileID: 0}
     - target: {fileID: 2136361817903077499, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
       propertyPath: movementControllers.Array.size
