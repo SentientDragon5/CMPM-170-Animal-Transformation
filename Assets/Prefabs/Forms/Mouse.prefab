@@ -1379,6 +1379,7 @@ GameObject:
   - component: {fileID: 805173986920163614}
   - component: {fileID: 8864212789450974979}
   - component: {fileID: 5822608339033898074}
+  - component: {fileID: 5741882975146633205}
   m_Layer: 8
   m_Name: Mouse
   m_TagString: Untagged
@@ -1454,6 +1455,28 @@ CapsuleCollider:
   m_Height: 2.2090783
   m_Direction: 2
   m_Center: {x: 0, y: 0.38555825, z: -0.17098927}
+--- !u!95 &5741882975146633205
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993829823211771588}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: b1a8c985a5f6eec4b9a4fa3f401e1cf6, type: 3}
+  m_Controller: {fileID: 9100000, guid: ceeb135f7c8ffc14b9f3b46a43a21fb5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1026923250598824811
 GameObject:
   m_ObjectHideFlags: 0

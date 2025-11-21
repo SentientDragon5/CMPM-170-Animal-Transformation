@@ -2104,7 +2104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4859494175687828763}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15928037, y: -0.28678745, z: 0.04841925, w: 0.94341844}
+  m_LocalRotation: {x: 0.2534013, y: 0.00000003341755, z: -0.0000000021755768, w: 0.9673613}
   m_LocalPosition: {x: 0, y: 2.25, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3792,6 +3792,7 @@ GameObject:
   - component: {fileID: 4550257071031681446}
   - component: {fileID: 1889268315142194661}
   - component: {fileID: 5247533779729105958}
+  - component: {fileID: 5115280597648821174}
   m_Layer: 8
   m_Name: Fish
   m_TagString: Untagged
@@ -3874,6 +3875,28 @@ CapsuleCollider:
   m_Height: 4.1179924
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.2356968}
+--- !u!95 &5115280597648821174
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7996984243836254510}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 71a3bda626c8bff4da4b6cc764a5eefe, type: 3}
+  m_Controller: {fileID: 9100000, guid: ad73ce6c2f9937f44af53bff20a18305, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8395410293534476933
 GameObject:
   m_ObjectHideFlags: 0
