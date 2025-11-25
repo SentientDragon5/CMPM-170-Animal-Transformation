@@ -24,13 +24,10 @@ public class FishController : GenericMoveController
     [Header("Watering")]
     public LayerMask waterLayer = 16; // layer 4 so 2 ^ 4
     public float waterDistance = 0.3f;
-    public bool inWater = false;
-    public PlayerController Player;
 
     [Header("Animation")]
     public float animSmoothing = 0.1f;
 
-    float turnAmount;
     float lastJumpTime;
 
     Transform cam => Camera.main.transform;
@@ -80,11 +77,6 @@ public class FishController : GenericMoveController
         return false;
     }
     
-    protected bool InWater()
-    {
-        return Player.waterBodyList.Count > 0;
-    }
-
     void UpdateAnimator()
     {
         float speed = rb.linearVelocity.magnitude / moveSpeed;
