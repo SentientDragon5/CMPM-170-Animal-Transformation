@@ -264,14 +264,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 799837698655127940, guid: 43a6c205c7efb40ce8776b56c97baabe, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: dfc08c90188302847afb04f628582097, type: 2}
     - target: {fileID: 3931566522269425238, guid: 43a6c205c7efb40ce8776b56c97baabe, type: 3}
       propertyPath: m_Name
       value: MouseWorld
       objectReference: {fileID: 0}
+    - target: {fileID: 4304830662091603632, guid: 43a6c205c7efb40ce8776b56c97baabe, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: dfc08c90188302847afb04f628582097, type: 2}
+    - target: {fileID: 4664378904404550094, guid: 43a6c205c7efb40ce8776b56c97baabe, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: dfc08c90188302847afb04f628582097, type: 2}
     - target: {fileID: 5800270365320042985, guid: 43a6c205c7efb40ce8776b56c97baabe, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 977920d1dad74164ba9e3ff9aaae8193, type: 2}
+      objectReference: {fileID: 2100000, guid: 5e88a93148f69984e968ecc92408960f, type: 2}
+    - target: {fileID: 6000983698481403589, guid: 43a6c205c7efb40ce8776b56c97baabe, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: dfc08c90188302847afb04f628582097, type: 2}
     - target: {fileID: 6372266434704329207, guid: 43a6c205c7efb40ce8776b56c97baabe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.9778
