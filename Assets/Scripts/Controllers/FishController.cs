@@ -31,6 +31,12 @@ public class FishController : GenericMoveController
     float turnAmount;
     float lastJumpTime;
 
+    Animator anim;
+    public override void Awake()
+    {
+        base.Awake();
+        anim = GetComponent<Animator>();
+    }
     public override void Move(Vector3 moveInput)
     {
         // called on update, so we use this to move the player
@@ -81,6 +87,8 @@ public class FishController : GenericMoveController
             // rotate the player by turn amount
             rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
         }
+        
+        UpdateAnimator();
     }
 
     // called by the player controller when the jump input is pressed
@@ -133,4 +141,9 @@ public class FishController : GenericMoveController
         return false;
     }
 
+    void UpdateAnimator()
+    {
+        float speed = rb.linearVelocity.magnitude / moveSpeed;
+        anim.SetFloat("Speed", speed);
+    }
 }

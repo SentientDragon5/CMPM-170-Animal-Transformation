@@ -25,6 +25,12 @@ public class CrabController : GenericMoveController
     float lastJumpTime;
 
 
+    Animator anim;
+    public override void Awake()
+    {
+        base.Awake();
+        anim = GetComponent<Animator>();
+    }
     // What we want to happen
 
     // when player is moving, only allow them to move to the moveinput right and left
@@ -66,7 +72,7 @@ public class CrabController : GenericMoveController
         {
             if (isMoving)
             {
-                Debug.Log("Moving - Applying movement and facing camera direction");
+                // Debug.Log("Moving - Applying movement and facing camera direction");
 
                 // Get camera forward direction (ignoring Y)
                 Transform camTransform = Camera.main.transform;
@@ -90,7 +96,7 @@ public class CrabController : GenericMoveController
             }
             else
             {
-                Debug.Log("Not Moving - Rotating to camera");
+                // Debug.Log("Not Moving - Rotating to camera");
                 // Face camera direction when not moving
                 Transform camTransform = Camera.main.transform;
                 Vector3 lookDir = camTransform.forward;
@@ -123,6 +129,8 @@ public class CrabController : GenericMoveController
             // Apply rotation in air (allows some turning while airborne)
             rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
         }
+        
+        UpdateAnimator();
     }
 
     public override void JumpAction()
@@ -151,5 +159,12 @@ public class CrabController : GenericMoveController
         }
         Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * 0.2f, Color.red);
         return false;
+    }
+
+    
+    void UpdateAnimator()
+    {
+        float speed = rb.linearVelocity.magnitude / moveSpeed;
+        anim.SetFloat("Speed", speed);
     }
 }

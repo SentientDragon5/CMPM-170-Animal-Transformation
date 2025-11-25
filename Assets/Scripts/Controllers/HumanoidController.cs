@@ -21,8 +21,18 @@ public class HumanoidController : GenericMoveController
     public LayerMask enviromentLayer = 128; // layer 7 so 2 ^ 7
     public float groundingDistance = 0.1f;
 
+    [Header("Animation")]
+    public float animationSpeed = 0.5f;
+
+    Animator anim;
     float turnAmount;
     float lastJumpTime;
+
+    public override void Awake()
+    {
+        base.Awake();
+        anim = GetComponent<Animator>();
+    }
 
     public override void Move(Vector3 moveInput)
     {
@@ -63,6 +73,8 @@ public class HumanoidController : GenericMoveController
             // rotate the player by turn amount
             rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
         }
+        
+        UpdateAnimator();
     }
 
     // called by the player controller when the jump input is pressed
@@ -98,5 +110,11 @@ public class HumanoidController : GenericMoveController
         }
         Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.red);
         return false;
+    }
+
+    void UpdateAnimator()
+    {
+        float speed = rb.linearVelocity.magnitude / moveSpeed;
+        anim.SetFloat("Speed", speed);
     }
 }
