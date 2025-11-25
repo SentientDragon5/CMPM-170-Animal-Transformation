@@ -2105,8 +2105,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4859494175687828763}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2534013, y: 0.00000003341755, z: -0.0000000021755768, w: 0.9673613}
-  m_LocalPosition: {x: 0, y: 2.25, z: -4}
+  m_LocalRotation: {x: 0, y: 1.3630479e-15, z: -2.7060267e-17, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2179,13 +2179,13 @@ MonoBehaviour:
   Orbits:
     Top:
       Radius: 2
-      Height: 5
+      Height: 3
     Center:
       Radius: 4
-      Height: 2.25
+      Height: 0
     Bottom:
-      Radius: 2.5
-      Height: 0.1
+      Radius: 2
+      Height: -3
     SplineCurvature: 0.5
   RecenteringTarget: 2
   HorizontalAxis:
@@ -3132,7 +3132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5167477170530140479
 Transform:
   m_ObjectHideFlags: 0
@@ -3821,6 +3821,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4550257071031681446}
+  - component: {fileID: 1597196100046857536}
   - component: {fileID: 5247533779729105958}
   - component: {fileID: 5115280597648821174}
   - component: {fileID: 1639120944512640144}
@@ -3830,7 +3831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4550257071031681446
 Transform:
   m_ObjectHideFlags: 0
@@ -3852,6 +3853,39 @@ Transform:
   - {fileID: 5186349987919869760}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1597196100046857536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7996984243836254510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f40e53cf5c1454386a778ddfa1570d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FishController
+  dissolveMaterials:
+  - {fileID: 2100000, guid: 6790791152887b241b05b493364814cb, type: 2}
+  dissolveTime: 0.5
+  moveSpeed: 5
+  movingTurnSpeed: 400
+  jumpSpeed: 10
+  jumpMinTime: 0.2
+  randomSpeed: 0.1
+  airSpeed: 5
+  airControl: 0.1
+  airTurnSpeed: 200
+  gravityScale: 2
+  enviromentLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  groundingDistance: 1.3
+  waterLayer:
+    serializedVersion: 2
+    m_Bits: 16
+  surfaceOffset: -0.5
+  animSmoothing: 10
 --- !u!136 &5247533779729105958
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3868,7 +3902,7 @@ CapsuleCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.49373055
@@ -3909,6 +3943,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f40e53cf5c1454386a778ddfa1570d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishController
+  dissolveMaterials: []
+  dissolveTime: 0.1
   moveSpeed: 5
   movingTurnSpeed: 400
   jumpSpeed: 10

@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 800814158}
     m_Modifications:
+    - target: {fileID: 733561958082690287, guid: 4c17fa2b98dc84b47b5f1aa6433d80c7, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4330260038459378343, guid: 4c17fa2b98dc84b47b5f1aa6433d80c7, type: 3}
       propertyPath: priority
       value: 0
@@ -278,34 +282,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 531010364309697661, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 531010364309697661, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 531010364309697661, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.98337454
-      objectReference: {fileID: 0}
-    - target: {fileID: 531010364309697661, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.18158911
-      objectReference: {fileID: 0}
-    - target: {fileID: 531010364309697661, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.0000000131605296
-      objectReference: {fileID: 0}
-    - target: {fileID: 531010364309697661, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.0000000024302123
-      objectReference: {fileID: 0}
-    - target: {fileID: 575743020207062511, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
-      propertyPath: m_Center.y
-      value: 0.09
-      objectReference: {fileID: 0}
     - target: {fileID: 3304332289263201602, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
       propertyPath: m_Name
       value: PlayerSetup

@@ -473,7 +473,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768414964322069949}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 7.03, y: 7.03, z: 7.03}
   m_ConstrainProportionsScale: 0
@@ -528,7 +528,7 @@ CapsuleCollider:
   m_Radius: 0.07856015
   m_Height: 0.35506687
   m_Direction: 0
-  m_Center: {x: 0, y: 0.07856015, z: 0}
+  m_Center: {x: 0, y: 0.09, z: 0}
 --- !u!114 &8346837274788714292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,7 +541,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2ae4f926d1892d4b97941e16213cf15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrabMovement
-  moveSpeed: 15
+  dissolveMaterials:
+  - {fileID: 2100000, guid: 5cde760e08c00d541b74eb294163f7fb, type: 2}
+  dissolveTime: 0.5
+  moveSpeed: 5
   standingTurnSpeed: 0
   movingTurnSpeed: 0
   jumpSpeed: 10
@@ -3370,8 +3373,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6980906073992701090}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18158908, y: 0.000000013160528, z: -0.000000002430211, w: 0.98337454}
-  m_LocalPosition: {x: 0, y: 0.32005683, z: -0.56898993}
+  m_LocalRotation: {x: -0.099421374, y: 0.5069487, z: 0.059005216, w: 0.8541878}
+  m_LocalPosition: {x: -0.3168971, y: 0.017306399, z: -0.1729423}
   m_LocalScale: {x: 0.1422475, y: 0.1422475, z: 0.1422475}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3454,7 +3457,7 @@ MonoBehaviour:
     SplineCurvature: 0.5
   RecenteringTarget: 2
   HorizontalAxis:
-    Value: 0
+    Value: 61.377094
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -3464,7 +3467,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   VerticalAxis:
-    Value: 17.5
+    Value: -9.500187
     Center: 17.5
     Range: {x: -10, y: 45}
     Wrap: 0

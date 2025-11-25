@@ -20,9 +20,9 @@ public class PlayerController : MonoBehaviour
         if (moveState == newState)
             return;
 
-        movementControllers[moveState].Exit();
+        movementControllers[moveState].Exit(true);
         moveState = newState;
-        movementControllers[moveState].Enter();
+        movementControllers[moveState].Enter(true);
     }
 
     void Start()
