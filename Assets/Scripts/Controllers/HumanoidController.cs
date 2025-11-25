@@ -21,13 +21,18 @@ public class HumanoidController : GenericMoveController
     public LayerMask enviromentLayer = 128; // layer 7 so 2 ^ 7
     public float groundingDistance = 0.1f;
 
+    [Header("Swimming")]
+    public float riseSpeed = 10;
+    public float swimSpeed = 5;
+    public float surfaceOffset = -0.5f;
+
     [Header("Animation")]
     public float animSmoothing = 0.1f;
 
     Animator anim;
     float turnAmount;
     float lastJumpTime;
-
+    Vector3 move;
     public override void Awake()
     {
         base.Awake();
@@ -38,7 +43,7 @@ public class HumanoidController : GenericMoveController
     {
         // called on update, so we use this to move the player
         // first we take the movement input from player 
-        Vector3 move = new Vector3(moveInput.x, 0, moveInput.z);
+        move = new Vector3(moveInput.x, 0, moveInput.z);
 
         if (move.magnitude > 1f) move.Normalize();
         move = rb.transform.InverseTransformDirection(move);
@@ -54,27 +59,46 @@ public class HumanoidController : GenericMoveController
         // Back to World Space
         move = rb.transform.TransformVector(move);
         
-        if (grounded)
+        if (InWater)
         {
-            // set the players velocity to the move input * speed
-            rb.linearVelocity = move * moveSpeed;
-            // decide whether to move with a standing speed or the moving speed
-            float turnSpeed = Mathf.Lerp(standingTurnSpeed, movingTurnSpeed, move.magnitude);
-            // rotate player by turn
-            rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * turnSpeed * Time.deltaTime, Vector3.up));
+            WaterMovement();
+        }
+        else if (grounded)
+        {
+            GroundedMovement();
         }
         else
         {
-            // add gravity to our velocity
-            // slowly air strafe in a controlled way
-            move = Vector3.MoveTowards(rb.linearVelocity, move * airSpeed, airControl * moveInput.magnitude);
-            move.y = rb.linearVelocity.y;
-            rb.linearVelocity += gravityScale * Physics.gravity * Time.deltaTime;
-            // rotate the player by turn amount
-            rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
+            AirborneMovment(moveInput);
         }
         
         UpdateAnimator();
+    }
+    void GroundedMovement()
+    {
+        // set the players velocity to the move input * speed
+        rb.linearVelocity = move * moveSpeed;
+        // decide whether to move with a standing speed or the moving speed
+        float turnSpeed = Mathf.Lerp(standingTurnSpeed, movingTurnSpeed, move.magnitude);
+        // rotate player by turn
+        rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * turnSpeed * Time.deltaTime, Vector3.up));
+    }
+    void AirborneMovment(Vector3 moveInput)
+    {
+        // add gravity to our velocity
+        // slowly air strafe in a controlled way
+        move = Vector3.MoveTowards(rb.linearVelocity, move * airSpeed, airControl * moveInput.magnitude);
+        move.y = rb.linearVelocity.y;
+        rb.linearVelocity += gravityScale * Physics.gravity * Time.deltaTime;
+        // rotate the player by turn amount
+        rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
+    }
+    void WaterMovement()
+    {
+        // ensure that you set surface offset such that the collider does not fully
+        // exit the volume if it exits it will bounce.
+        float rise = Mathf.MoveTowards(transform.position.y, GetSurfacePoint().y + surfaceOffset, riseSpeed * Time.deltaTime) * (GetSurfacePoint().y + surfaceOffset - transform.position.y); 
+        rb.linearVelocity = new Vector3(move.x * moveSpeed, rise, move.z * moveSpeed);
     }
 
     // called by the player controller when the jump input is pressed
@@ -117,5 +141,14 @@ public class HumanoidController : GenericMoveController
         float speed = rb.linearVelocity.magnitude / moveSpeed;
         float current_speed = Mathf.Lerp(anim.GetFloat("Speed"), speed, animSmoothing * Time.deltaTime);
         anim.SetFloat("Speed", current_speed);
+        anim.SetBool("Grounded", CheckGrounded(out Vector3 normal));
+    }
+
+    
+    
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(GetSurfacePoint(), 0.1f);
     }
 }
