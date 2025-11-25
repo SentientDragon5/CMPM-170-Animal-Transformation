@@ -1466,7 +1466,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   groundingDistance: 0.1
-  riseSpeed: 1
+  riseSpeed: 200
   swimSpeed: 5
   surfaceOffset: -1
   animSmoothing: 10
