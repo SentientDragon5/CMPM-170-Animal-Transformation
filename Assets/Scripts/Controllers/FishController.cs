@@ -2,13 +2,38 @@ using UnityEngine;
 
 public class FishController : GenericMoveController
 {    
+    [Header("Walking")]
     public float moveSpeed = 5;
-    public float jumpSpeed = 10;
-    public bool inWater = false;
-    public LayerMask waterLayer = 16;
-    public LayerMask enviromentLayer = 128;
+    public float movingTurnSpeed = 400;
 
-    
+    [Header("Jumping")]
+    public float jumpSpeed = 10;
+    public float jumpMinTime = 0.2f;
+
+    [Header("Falling")]
+    public float airSpeed = 5;
+    public float airControl = 0.1f;
+    public float airTurnSpeed = 200;
+    public float gravityScale = 2;
+
+    [Header("Grounding")]
+    public LayerMask enviromentLayer = 128; // layer 7 so 2 ^ 7
+    public float groundingDistance = 0.3f;
+
+
+    [Header("Watering")]
+    public LayerMask waterLayer = 16; // layer 4 so 2 ^ 4
+    public float waterDistance = 0.3f;
+    public bool inWater = false;
+    public PlayerController Player;
+
+    [Header("Animation")]
+    public float animSmoothing = 0.1f;
+
+    float turnAmount;
+    float lastJumpTime;
+
+    Transform cam => Camera.main.transform;
     Animator anim;
     public override void Awake()
     {
@@ -17,61 +42,53 @@ public class FishController : GenericMoveController
     }
     public override void Move(Vector3 moveInput)
     {
-        // called on update, so we use this to move the player
-        Vector3 groundMovement = new Vector3(moveInput.x, 0, moveInput.z);
-        if (CheckWater(out Vector3 wnormal))
-        {
-            Vector3 move = groundMovement * moveSpeed;
-            rb.linearVelocity = Vector3.ProjectOnPlane(move, wnormal);
-        }
-        else if (CheckGrounded(out Vector3 normal))
-        {
+        // Vector3 move = cam.forward * moveInput.z + cam.right * moveInput.x + Vector3.up * moveInput.y;
 
-        }
-        else
-        {
-            rb.linearVelocity += Physics.gravity;
-        }
-        
-        
+        Quaternion lookRot = Quaternion.LookRotation(cam.forward, Vector3.up);
+        lookRot = Quaternion.RotateTowards(rb.rotation, lookRot, movingTurnSpeed * Time.deltaTime);
+        rb.MoveRotation(lookRot);
+        rb.linearVelocity = moveInput * moveSpeed;
+
         UpdateAnimator();
     }
 
     public override void JumpAction()
     {
-        if (CheckGrounded(out Vector3 normal))
+        if (CheckGrounded(out Vector3 normal) && (Time.time - lastJumpTime > jumpMinTime))
         {
-            rb.linearVelocity += Vector3.up * jumpSpeed;
+            lastJumpTime = Time.time;
+            rb.linearVelocity += normal * jumpSpeed;
         }
     }
-
-    protected bool CheckWater(out Vector3 normal)
-    {
-        normal = Vector3.zero;
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 0.1f, waterLayer))
-        {
-            normal = hit.normal;
-            return true;
-        }
-        return false;
-    }
-
 
     protected bool CheckGrounded(out Vector3 normal)
     {
         normal = Vector3.zero;
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 0.1f, enviromentLayer))
+        if (Time.time - lastJumpTime < jumpMinTime)
         {
+            Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.white);
+            return false;
+        }
+
+        if (Physics.Raycast(transform.position + Vector3.up * groundingDistance/2f, Vector3.down, out RaycastHit hit, groundingDistance, enviromentLayer))
+        {
+            Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.green);
             normal = hit.normal;
             return true;
         }
+        Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.red);
         return false;
     }
-
     
+    protected bool InWater()
+    {
+        return Player.waterBodyList.Count > 0;
+    }
+
     void UpdateAnimator()
     {
         float speed = rb.linearVelocity.magnitude / moveSpeed;
-        anim.SetFloat("Speed", speed);
+        float current_speed = Mathf.Lerp(anim.GetFloat("Speed"), speed, animSmoothing * Time.deltaTime);
+        anim.SetFloat("Speed", current_speed * 0.9f + 0.1f);
     }
 }

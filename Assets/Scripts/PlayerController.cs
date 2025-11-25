@@ -77,8 +77,8 @@ public class PlayerController : MonoBehaviour
 
         Transform camTransform = Camera.main.transform;
         // local camera forward and right, but global up
-        Vector3 camForward = new Vector3(camTransform.forward.x, 0, camTransform.forward.z).normalized;
-        Vector3 camRight = new Vector3(camTransform.right.x, 0, camTransform.right.z).normalized;
+        Vector3 camForward = camTransform.forward;// new Vector3(camTransform.forward.x, 0, camTransform.forward.z).normalized;
+        Vector3 camRight = camTransform.right;//new Vector3(camTransform.right.x, 0, camTransform.right.z).normalized;
         Vector3 move = moveInput.y * camForward + moveInput.x * camRight + moveInput.z * Vector3.up;
         if (move.magnitude > 1)
             move.Normalize();
