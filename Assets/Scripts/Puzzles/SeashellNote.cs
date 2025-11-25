@@ -14,5 +14,6 @@ public class SeashellNoteA : MonoBehaviour
         {
             note.Play();
         }
+        onNotePlayed.Invoke(noteName);
     }
 }
