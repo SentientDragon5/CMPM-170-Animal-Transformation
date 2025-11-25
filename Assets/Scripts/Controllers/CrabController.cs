@@ -21,6 +21,9 @@ public class CrabController : GenericMoveController
     public LayerMask enviromentLayer = 128; // layer 7 so 2 ^ 7
     public float groundingDistance = 0.1f;
 
+    [Header("Animation")]
+    public float animSmoothing = 0.1f;
+    
     float turnAmount;
     float lastJumpTime;
 
@@ -165,6 +168,7 @@ public class CrabController : GenericMoveController
     void UpdateAnimator()
     {
         float speed = rb.linearVelocity.magnitude / moveSpeed;
-        anim.SetFloat("Speed", speed);
+        float current_speed = Mathf.Lerp(anim.GetFloat("Speed"), speed, animSmoothing * Time.deltaTime);
+        anim.SetFloat("Speed", current_speed);
     }
 }

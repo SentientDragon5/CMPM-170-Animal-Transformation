@@ -435,6 +435,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.000000002430211
       objectReference: {fileID: 0}
+    - target: {fileID: 5870628411316301077, guid: c34341af927b0da40a98803c4ee58295, type: 3}
+      propertyPath: animSmoothing
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8493697539619880324, guid: c34341af927b0da40a98803c4ee58295, type: 3}
       propertyPath: m_Name
       value: Crab
@@ -605,14 +609,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishController
   moveSpeed: 5
+  movingTurnSpeed: 400
   jumpSpeed: 10
-  inWater: 0
-  waterLayer:
-    serializedVersion: 2
-    m_Bits: 16
+  jumpMinTime: 0.2
+  airSpeed: 5
+  airControl: 0.1
+  airTurnSpeed: 200
+  gravityScale: 2
   enviromentLayer:
     serializedVersion: 2
     m_Bits: 128
+  groundingDistance: 0.3
+  waterLayer:
+    serializedVersion: 2
+    m_Bits: 16
+  waterDistance: 0.3
+  inWater: 0
+  Player: {fileID: 0}
+  animSmoothing: 10
 --- !u!4 &6232835742442240148 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4550257071031681446, guid: 2c4156f1703dd22458d102851610d320, type: 3}
@@ -688,6 +702,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8864212789450974979, guid: 4354551a153f6b94084aa68891bf9023, type: 3}
       propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864212789450974979, guid: 4354551a153f6b94084aa68891bf9023, type: 3}
+      propertyPath: animSmoothing
       value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
