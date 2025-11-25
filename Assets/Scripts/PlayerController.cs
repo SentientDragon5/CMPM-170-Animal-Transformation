@@ -16,13 +16,13 @@ public class PlayerController : MonoBehaviour
     void SwitchState(int newState)
     {
         this.waterBodyList.Clear();
-        Debug.Log("Switching state to " + newState);
+        // Debug.Log("Switching state to " + newState);
         if (moveState == newState)
             return;
 
-        movementControllers[moveState].Exit();
+        movementControllers[moveState].Exit(true);
         moveState = newState;
-        movementControllers[moveState].Enter();
+        movementControllers[moveState].Enter(true);
     }
 
     void Start()
