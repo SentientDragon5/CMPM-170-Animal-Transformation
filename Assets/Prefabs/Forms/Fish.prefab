@@ -2089,6 +2089,7 @@ GameObject:
   - component: {fileID: 3489277354172213061}
   - component: {fileID: 1423395146693623263}
   - component: {fileID: 9094220558921235494}
+  - component: {fileID: 2319575687113221542}
   m_Layer: 8
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -2104,8 +2105,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4859494175687828763}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2534013, y: 0.00000003341755, z: -0.0000000021755768, w: 0.9673613}
-  m_LocalPosition: {x: 0, y: 2.25, z: -4}
+  m_LocalRotation: {x: 0, y: 1.3630479e-15, z: -2.7060267e-17, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2178,13 +2179,13 @@ MonoBehaviour:
   Orbits:
     Top:
       Radius: 2
-      Height: 5
+      Height: 3
     Center:
       Radius: 4
-      Height: 2.25
+      Height: 0
     Bottom:
-      Radius: 2.5
-      Height: 0.1
+      Radius: 2
+      Height: -3
     SplineCurvature: 0.5
   RecenteringTarget: 2
   HorizontalAxis:
@@ -2315,6 +2316,36 @@ MonoBehaviour:
         DecelTime: 0
   PlayerIndex: -1
   AutoEnableInputs: 1
+--- !u!114 &2319575687113221542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859494175687828763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineDecollider
+  CameraRadius: 0.4
+  Decollision:
+    Enabled: 1
+    ObstacleLayers:
+      serializedVersion: 2
+      m_Bits: 129
+    UseFollowTarget:
+      Enabled: 0
+      YOffset: 0
+    Damping: 0.5
+    SmoothingTime: 0
+  TerrainResolution:
+    Enabled: 0
+    TerrainLayers:
+      serializedVersion: 2
+      m_Bits: 129
+    MaximumRaycast: 10
+    Damping: 0.5
 --- !u!1 &4897563132953205042
 GameObject:
   m_ObjectHideFlags: 0
@@ -3101,7 +3132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5167477170530140479
 Transform:
   m_ObjectHideFlags: 0
@@ -3425,7 +3456,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e9b445ae0f1c6e348872694e42828444, type: 2}
+  - {fileID: 2100000, guid: 6790791152887b241b05b493364814cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3790,16 +3821,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4550257071031681446}
-  - component: {fileID: 1889268315142194661}
+  - component: {fileID: 1597196100046857536}
   - component: {fileID: 5247533779729105958}
   - component: {fileID: 5115280597648821174}
+  - component: {fileID: 1639120944512640144}
   m_Layer: 8
   m_Name: Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4550257071031681446
 Transform:
   m_ObjectHideFlags: 0
@@ -3821,7 +3853,7 @@ Transform:
   - {fileID: 5186349987919869760}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1889268315142194661
+--- !u!114 &1597196100046857536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3830,14 +3862,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7996984243836254510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8b5bf9537f2d774dace78b5d191adfb, type: 3}
+  m_Script: {fileID: 11500000, guid: 37f40e53cf5c1454386a778ddfa1570d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishController
+  dissolveMaterials:
+  - {fileID: 2100000, guid: 6790791152887b241b05b493364814cb, type: 2}
+  dissolveTime: 0.5
   moveSpeed: 5
-  standingTurnSpeed: 0
   movingTurnSpeed: 400
   jumpSpeed: 10
   jumpMinTime: 0.2
+  randomSpeed: 0.1
   airSpeed: 5
   airControl: 0.1
   airTurnSpeed: 200
@@ -3845,13 +3880,12 @@ MonoBehaviour:
   enviromentLayer:
     serializedVersion: 2
     m_Bits: 128
-  groundingDistance: 0.3
+  groundingDistance: 1.3
   waterLayer:
     serializedVersion: 2
     m_Bits: 16
-  waterDistance: 0.3
-  inWater: 0
-  Player: {fileID: 0}
+  surfaceOffset: -0.5
+  animSmoothing: 10
 --- !u!136 &5247533779729105958
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3868,7 +3902,7 @@ CapsuleCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.49373055
@@ -3897,6 +3931,38 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1639120944512640144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7996984243836254510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f40e53cf5c1454386a778ddfa1570d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FishController
+  dissolveMaterials: []
+  dissolveTime: 0.1
+  moveSpeed: 5
+  movingTurnSpeed: 400
+  jumpSpeed: 10
+  jumpMinTime: 0.2
+  randomSpeed: 10
+  airSpeed: 5
+  airControl: 0.1
+  airTurnSpeed: 200
+  gravityScale: 2
+  enviromentLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  groundingDistance: 0.3
+  waterLayer:
+    serializedVersion: 2
+    m_Bits: 16
+  surfaceOffset: -0.5
+  animSmoothing: 0.1
 --- !u!1 &8395410293534476933
 GameObject:
   m_ObjectHideFlags: 0
