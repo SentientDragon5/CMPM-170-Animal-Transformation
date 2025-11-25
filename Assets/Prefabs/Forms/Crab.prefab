@@ -3354,6 +3354,7 @@ GameObject:
   - component: {fileID: 2874607850649931910}
   - component: {fileID: 1761986653837677606}
   - component: {fileID: 4205143715402371520}
+  - component: {fileID: 7814902843662914772}
   m_Layer: 8
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -3396,7 +3397,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 0}
+    TrackingTarget: {fileID: 8588423046598876684}
     LookAtTarget: {fileID: 8761335029269153129}
     CustomLookAtTarget: 1
   Lens:
@@ -3580,6 +3581,36 @@ MonoBehaviour:
         DecelTime: 0
   PlayerIndex: -1
   AutoEnableInputs: 1
+--- !u!114 &7814902843662914772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6980906073992701090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineDecollider
+  CameraRadius: 0.4
+  Decollision:
+    Enabled: 1
+    ObstacleLayers:
+      serializedVersion: 2
+      m_Bits: 129
+    UseFollowTarget:
+      Enabled: 0
+      YOffset: 0
+    Damping: 0.5
+    SmoothingTime: 0
+  TerrainResolution:
+    Enabled: 0
+    TerrainLayers:
+      serializedVersion: 2
+      m_Bits: 129
+    MaximumRaycast: 10
+    Damping: 0.5
 --- !u!1 &7131555629928865450
 GameObject:
   m_ObjectHideFlags: 0

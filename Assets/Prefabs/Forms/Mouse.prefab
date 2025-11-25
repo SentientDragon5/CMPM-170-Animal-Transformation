@@ -880,6 +880,7 @@ GameObject:
   - component: {fileID: 2578041182358656701}
   - component: {fileID: 2845231650954876293}
   - component: {fileID: 4131984797183413998}
+  - component: {fileID: 7588766593174724687}
   m_Layer: 8
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -1106,6 +1107,36 @@ MonoBehaviour:
         DecelTime: 0
   PlayerIndex: -1
   AutoEnableInputs: 1
+--- !u!114 &7588766593174724687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735313567032928200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineDecollider
+  CameraRadius: 0.4
+  Decollision:
+    Enabled: 1
+    ObstacleLayers:
+      serializedVersion: 2
+      m_Bits: 129
+    UseFollowTarget:
+      Enabled: 0
+      YOffset: 0
+    Damping: 0.5
+    SmoothingTime: 0
+  TerrainResolution:
+    Enabled: 0
+    TerrainLayers:
+      serializedVersion: 2
+      m_Bits: 129
+    MaximumRaycast: 10
+    Damping: 0.5
 --- !u!1 &746932485243393664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,6 +1463,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   groundingDistance: 0.1
+  riseSpeed: 10
+  swimSpeed: 5
+  surfaceOffset: -0.5
+  animSmoothing: 0.1
 --- !u!136 &5822608339033898074
 CapsuleCollider:
   m_ObjectHideFlags: 0

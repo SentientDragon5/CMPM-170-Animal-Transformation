@@ -51,8 +51,9 @@ public class GenericMoveController : MonoBehaviour
     public void FixUp()
     {
         // Self right the character if it turned on its side.
-        if (rb == null)
-            rb = transform.parent.GetComponent<Rigidbody>();
-        rb.MoveRotation(Quaternion.FromToRotation(transform.up, Vector3.up));
+        // if (rb == null)
+        //     rb = transform.parent.GetComponent<Rigidbody>();
+        // rb.MoveRotation(Quaternion.FromToRotation(transform.up, Vector3.up));
+        transform.up = Vector3.up;
     }
 }

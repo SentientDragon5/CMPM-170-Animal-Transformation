@@ -145,13 +145,15 @@ public class HumanoidController : GenericMoveController
     }
 
     
-    
+#if UNITY_EDITOR
     void OnDrawGizmos()
     {
-        if (InWater)
+        // Player will be null when not in play mode
+        if (player != null && InWater)
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(GetSurfacePoint(), 0.1f);
         }
     }
+#endif
 }
