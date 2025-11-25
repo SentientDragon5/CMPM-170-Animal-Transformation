@@ -95,15 +95,10 @@ public class HumanoidController : GenericMoveController
     }
     void WaterMovement()
     {
+        // ensure that you set surface offset such that the collider does not fully
+        // exit the volume if it exits it will bounce.
         float rise = Mathf.MoveTowards(transform.position.y, GetSurfacePoint().y + surfaceOffset, riseSpeed * Time.deltaTime) * (GetSurfacePoint().y + surfaceOffset - transform.position.y); 
         rb.linearVelocity = new Vector3(move.x * moveSpeed, rise, move.z * moveSpeed);
-        Vector3 surface = GetSurfacePoint();
-        // print(rise + " " + Mathf.Abs(transform.position.y - (surface.y + surfaceOffset)));
-
-        // if (Mathf.Abs(transform.position.y - (surface.y + surfaceOffset)) < 1)
-        // {
-        //     rb.MovePosition(surface);
-        // }
     }
 
     // called by the player controller when the jump input is pressed

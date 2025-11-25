@@ -9,6 +9,7 @@ public class FishController : GenericMoveController
     [Header("Jumping")]
     public float jumpSpeed = 10;
     public float jumpMinTime = 0.2f;
+    public float randomSpeed = 10;
 
     [Header("Falling")]
     public float airSpeed = 5;
@@ -22,14 +23,15 @@ public class FishController : GenericMoveController
 
 
     [Header("Watering")]
-    public LayerMask waterLayer = 16; // layer 4 so 2 ^ 4
-    public float waterDistance = 0.3f;
+    public LayerMask waterLayer = 16; // layer 4 so 2 ^ 4    
+    public float surfaceOffset = -0.5f;
 
     [Header("Animation")]
     public float animSmoothing = 0.1f;
 
     float lastJumpTime;
 
+    Vector3 move;
     Transform cam => Camera.main.transform;
     Animator anim;
     public override void Awake()
@@ -40,13 +42,53 @@ public class FishController : GenericMoveController
     public override void Move(Vector3 moveInput)
     {
         // Vector3 move = cam.forward * moveInput.z + cam.right * moveInput.x + Vector3.up * moveInput.y;
+        
+        move = new Vector3(moveInput.x, 0, moveInput.z);
+        if (move.magnitude > 1f) move.Normalize();
+        move = rb.transform.InverseTransformDirection(move);
+        move = rb.transform.TransformVector(move);
 
-        Quaternion lookRot = Quaternion.LookRotation(cam.forward, Vector3.up);
-        lookRot = Quaternion.RotateTowards(rb.rotation, lookRot, movingTurnSpeed * Time.deltaTime);
-        rb.MoveRotation(lookRot);
-        rb.linearVelocity = moveInput * moveSpeed;
+        if (InWater)
+        {
+            Quaternion lookRot = Quaternion.LookRotation(cam.forward, Vector3.up);
+            lookRot = Quaternion.RotateTowards(rb.rotation, lookRot, movingTurnSpeed * Time.deltaTime);
+            rb.MoveRotation(lookRot);
+            rb.linearVelocity = moveInput * moveSpeed;
+        }
+        else if (CheckGrounded(out Vector3 normal))
+        {
+            // bounce off ground in a random direction
+            JumpAction();
+        }
+        else
+        {
+            // fall as normal
+            AirborneMovment(moveInput);
+        }
 
         UpdateAnimator();
+    }
+    void AirborneMovment(Vector3 moveInput)
+    {
+        // add gravity to our velocity
+        // slowly air strafe in a controlled way
+        move = Vector3.MoveTowards(rb.linearVelocity, move * airSpeed, airControl * moveInput.magnitude);
+        move.y = rb.linearVelocity.y;
+        rb.linearVelocity += gravityScale * Physics.gravity * Time.deltaTime;
+        // skip rotation
+        // rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (InWater)
+            return;
+        foreach(var c in collision.contacts)
+        {
+            if (c.point.y < transform.position.y)
+            {
+                JumpAction();
+            }
+        }
     }
 
     public override void JumpAction()
@@ -54,7 +96,7 @@ public class FishController : GenericMoveController
         if (CheckGrounded(out Vector3 normal) && (Time.time - lastJumpTime > jumpMinTime))
         {
             lastJumpTime = Time.time;
-            rb.linearVelocity += normal * jumpSpeed;
+            rb.linearVelocity += (normal + new Vector3(Random.Range(-1,1),0,Random.Range(-1,1)) * randomSpeed) * jumpSpeed;
         }
     }
 
