@@ -1178,8 +1178,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752622515494392419}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20718072, y: -0.2340169, z: 0.051114928, w: 0.94852495}
-  m_LocalPosition: {x: 0, y: 0.32005686, z: -0.56899005}
+  m_LocalRotation: {x: 0.25340137, y: 0.0000000072685866, z: 3.7702358e-10, w: 0.9673613}
+  m_LocalPosition: {x: 0, y: 0.32005686, z: -0.56899}
   m_LocalScale: {x: 0.1422475, y: 0.14224748, z: 0.14224748}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4344,6 +4344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4703262572818240830}
   - component: {fileID: 9198074070011307228}
+  - component: {fileID: 5870628411316301077}
   m_Layer: 0
   m_Name: Crab
   m_TagString: Untagged
@@ -4393,6 +4394,31 @@ CapsuleCollider:
   m_Height: 0.35506687
   m_Direction: 0
   m_Center: {x: 0, y: 0.06881885, z: 0}
+--- !u!114 &5870628411316301077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493697539619880324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2ae4f926d1892d4b97941e16213cf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CrabMovement
+  moveSpeed: 15
+  standingTurnSpeed: 0
+  movingTurnSpeed: 0
+  jumpSpeed: 10
+  jumpMinTime: 1
+  airSpeed: 1
+  airControl: 0.1
+  airTurnSpeed: 200
+  gravityScale: 2
+  enviromentLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  groundingDistance: 0.1
 --- !u!1 &8567129587094034820
 GameObject:
   m_ObjectHideFlags: 0
@@ -4449,9 +4475,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8640616023312921762}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3245135, y: 0, z: 0.04864295}
-  m_LocalScale: {x: 0.1422475, y: 0.1422475, z: 0.1422475}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4703262572818240830}

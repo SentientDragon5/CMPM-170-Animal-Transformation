@@ -111,8 +111,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6890809993302375781}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38931394, y: 0.5394859, z: -0.30903906, w: 0.67962086}
-  m_LocalPosition: {x: -2.297908, y: 4.8234453, z: -0.5353582}
+  m_LocalRotation: {x: 0.2534014, y: 0.000000007910129, z: -0.0000000020720676, w: 0.9673612}
+  m_LocalPosition: {x: 0, y: 2.25, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -334,6 +334,7 @@ MonoBehaviour:
   movementControllers:
   - {fileID: 1354272418108388042}
   - {fileID: 8314416918695951575}
+  - {fileID: 5826581336230143247}
   moveState: 0
   waterBodyList: []
 --- !u!114 &6748011998831778474
@@ -420,7 +421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8493697539619880324, guid: c34341af927b0da40a98803c4ee58295, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -432,6 +433,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4703262572818240830, guid: c34341af927b0da40a98803c4ee58295, type: 3}
   m_PrefabInstance: {fileID: 118366504671103002}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5826581336230143247 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5870628411316301077, guid: c34341af927b0da40a98803c4ee58295, type: 3}
+  m_PrefabInstance: {fileID: 118366504671103002}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2ae4f926d1892d4b97941e16213cf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CrabMovement
 --- !u!1001 &7591584249068468530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -479,6 +491,22 @@ PrefabInstance:
     - target: {fileID: 4550257071031681446, guid: 2c4156f1703dd22458d102851610d320, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571701196642882799, guid: 2c4156f1703dd22458d102851610d320, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9673613
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571701196642882799, guid: 2c4156f1703dd22458d102851610d320, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.2534013
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571701196642882799, guid: 2c4156f1703dd22458d102851610d320, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.00000003341755
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571701196642882799, guid: 2c4156f1703dd22458d102851610d320, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0000000021755768
       objectReference: {fileID: 0}
     - target: {fileID: 7996984243836254510, guid: 2c4156f1703dd22458d102851610d320, type: 3}
       propertyPath: m_Name
@@ -560,6 +588,10 @@ PrefabInstance:
     - target: {fileID: 993829823211771588, guid: 4354551a153f6b94084aa68891bf9023, type: 3}
       propertyPath: m_Name
       value: Mouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 993829823211771588, guid: 4354551a153f6b94084aa68891bf9023, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
