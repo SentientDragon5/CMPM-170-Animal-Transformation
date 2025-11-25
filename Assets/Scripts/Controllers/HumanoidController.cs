@@ -97,7 +97,9 @@ public class HumanoidController : GenericMoveController
     {
         // ensure that you set surface offset such that the collider does not fully
         // exit the volume if it exits it will bounce.
-        float rise = Mathf.MoveTowards(transform.position.y, GetSurfacePoint().y + surfaceOffset, riseSpeed * Time.deltaTime) * (GetSurfacePoint().y + surfaceOffset - transform.position.y); 
+        float bouyancy = (GetSurfacePoint().y + surfaceOffset - transform.position.y);
+        float rise = Mathf.MoveTowards(rb.linearVelocity.y, bouyancy, riseSpeed * Time.deltaTime); 
+        // Debug.Log("buoy "+ bouyancy + " rise " + rise);
         rb.linearVelocity = new Vector3(move.x * moveSpeed, rise, move.z * moveSpeed);
     }
 

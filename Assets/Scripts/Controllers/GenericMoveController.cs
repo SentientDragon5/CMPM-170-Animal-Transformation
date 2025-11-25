@@ -45,6 +45,7 @@ public class GenericMoveController : MonoBehaviour
         if (transition)
         {
             gameObject.SetActive(true);
+            StopAllCoroutines();
             StartCoroutine(TransitionIn());
         }
         else
@@ -61,6 +62,7 @@ public class GenericMoveController : MonoBehaviour
         if (transition)
         {
             gameObject.SetActive(true);
+            StopAllCoroutines();
             StartCoroutine(TransitionOut());
         }
         else
