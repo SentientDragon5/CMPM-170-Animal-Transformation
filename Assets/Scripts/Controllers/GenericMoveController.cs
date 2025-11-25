@@ -45,6 +45,11 @@ public class GenericMoveController : MonoBehaviour
     public virtual void Exit()
     {
         gameObject.SetActive(false);
+        FixUp();
+    }
+
+    public void FixUp()
+    {
         // Self right the character if it turned on its side.
         if (rb == null)
             rb = transform.parent.GetComponent<Rigidbody>();
