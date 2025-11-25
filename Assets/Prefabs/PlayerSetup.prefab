@@ -197,7 +197,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 17
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
@@ -333,7 +333,7 @@ MonoBehaviour:
   playerInput: {fileID: 6748011998831778474}
   movementControllers:
   - {fileID: 1354272418108388042}
-  - {fileID: 8314416918695951575}
+  - {fileID: 8984119566544086538}
   - {fileID: 5826581336230143247}
   moveState: 0
   waterBodyList: []
@@ -578,27 +578,46 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1889268315142194661, guid: 2c4156f1703dd22458d102851610d320, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7996984243836254510, guid: 2c4156f1703dd22458d102851610d320, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 8984119566544086538}
   m_SourcePrefab: {fileID: 100100000, guid: 2c4156f1703dd22458d102851610d320, type: 3}
+--- !u!1 &549517683057246236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7996984243836254510, guid: 2c4156f1703dd22458d102851610d320, type: 3}
+  m_PrefabInstance: {fileID: 7591584249068468530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8984119566544086538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549517683057246236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f40e53cf5c1454386a778ddfa1570d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FishController
+  moveSpeed: 5
+  jumpSpeed: 10
+  inWater: 0
+  waterLayer:
+    serializedVersion: 2
+    m_Bits: 16
+  enviromentLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!4 &6232835742442240148 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4550257071031681446, guid: 2c4156f1703dd22458d102851610d320, type: 3}
   m_PrefabInstance: {fileID: 7591584249068468530}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8314416918695951575 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1889268315142194661, guid: 2c4156f1703dd22458d102851610d320, type: 3}
-  m_PrefabInstance: {fileID: 7591584249068468530}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8b5bf9537f2d774dace78b5d191adfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FishController
 --- !u!1001 &7624406185042941385
 PrefabInstance:
   m_ObjectHideFlags: 0
