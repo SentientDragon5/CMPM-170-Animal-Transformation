@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Water
+  - 1
+  - 2
+  - 3
+  - 4
   layers:
   - Default
   - TransparentFX

@@ -201,10 +201,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8808268842850122032, guid: 4c17fa2b98dc84b47b5f1aa6433d80c7, type: 3}
   m_PrefabInstance: {fileID: 222886095}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &546130536 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e5965e3e1219286469c28209908866bb, type: 3}
+  m_PrefabInstance: {fileID: 721873785}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &721873785
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1244732041}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: e5965e3e1219286469c28209908866bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e5965e3e1219286469c28209908866bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e5965e3e1219286469c28209908866bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e5965e3e1219286469c28209908866bb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e5965e3e1219286469c28209908866bb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e5965e3e1219286469c28209908866bb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e5965e3e1219286469c28209908866bb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e5965e3e1219286469c28209908866bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e5965e3e1219286469c28209908866bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e5965e3e1219286469c28209908866bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6161448157782799470, guid: e5965e3e1219286469c28209908866bb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: dccfb975497f6e24487d255a9a582a34, type: 2}
+    - target: {fileID: 919132149155446097, guid: e5965e3e1219286469c28209908866bb, type: 3}
+      propertyPath: m_Name
+      value: Crabix
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5965e3e1219286469c28209908866bb, type: 3}
 --- !u!4 &800814158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5872417122522490626, guid: a8b4b680fadc5b346828b46a6902daa1, type: 3}
   m_PrefabInstance: {fileID: 160371444055097495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1244732041 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4675261779549445412, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
+  m_PrefabInstance: {fileID: 2229810841095798252}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &160371444055097495
 PrefabInstance:
@@ -326,9 +397,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8843674700598244657, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
+      propertyPath: Damping.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843674700598244657, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
+      propertyPath: Damping.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4675261779549445412, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 546130536}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8f84bf5d8ac4bd40887a3686c72a81d, type: 3}
 --- !u!1660057539 &9223372036854775807
