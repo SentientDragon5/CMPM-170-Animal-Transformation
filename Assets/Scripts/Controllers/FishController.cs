@@ -5,8 +5,16 @@ public class FishController : GenericMoveController
     public float moveSpeed = 5;
     public float jumpSpeed = 10;
     public bool inWater = false;
-    public LayerMask waterLayer = 32;
+    public LayerMask waterLayer = 16;
     public LayerMask enviromentLayer = 128;
+
+    
+    Animator anim;
+    public override void Awake()
+    {
+        base.Awake();
+        anim = GetComponent<Animator>();
+    }
     public override void Move(Vector3 moveInput)
     {
         // called on update, so we use this to move the player
@@ -24,6 +32,9 @@ public class FishController : GenericMoveController
         {
             rb.linearVelocity += Physics.gravity;
         }
+        
+        
+        UpdateAnimator();
     }
 
     public override void JumpAction()
@@ -55,5 +66,12 @@ public class FishController : GenericMoveController
             return true;
         }
         return false;
+    }
+
+    
+    void UpdateAnimator()
+    {
+        float speed = rb.linearVelocity.magnitude / moveSpeed;
+        anim.SetFloat("Speed", speed);
     }
 }
