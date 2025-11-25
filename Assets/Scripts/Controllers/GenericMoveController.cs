@@ -45,5 +45,9 @@ public class GenericMoveController : MonoBehaviour
     public virtual void Exit()
     {
         gameObject.SetActive(false);
+        // Self right the character if it turned on its side.
+        if (rb == null)
+            rb = transform.parent.GetComponent<Rigidbody>();
+        rb.MoveRotation(Quaternion.FromToRotation(transform.up, Vector3.up));
     }
 }

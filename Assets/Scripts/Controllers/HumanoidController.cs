@@ -148,7 +148,10 @@ public class HumanoidController : GenericMoveController
     
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(GetSurfacePoint(), 0.1f);
+        if (InWater)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(GetSurfacePoint(), 0.1f);
+        }
     }
 }

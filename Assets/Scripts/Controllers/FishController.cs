@@ -80,6 +80,7 @@ public class FishController : GenericMoveController
     }
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("hit " + InWater);
         if (InWater)
             return;
         foreach(var c in collision.contacts)
@@ -122,6 +123,8 @@ public class FishController : GenericMoveController
     void UpdateAnimator()
     {
         float speed = rb.linearVelocity.magnitude / moveSpeed;
+        if (InWater)
+            speed = 1;
         float current_speed = Mathf.Lerp(anim.GetFloat("Speed"), speed, animSmoothing * Time.deltaTime);
         anim.SetFloat("Speed", current_speed * 0.9f + 0.1f);
     }
