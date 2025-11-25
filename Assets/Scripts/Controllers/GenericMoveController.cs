@@ -3,7 +3,7 @@ using UnityEngine;
 public class GenericMoveController : MonoBehaviour
 {
     protected Rigidbody rb;
-    void Awake()
+    public virtual void Awake()
     {
         rb = transform.parent.GetComponent<Rigidbody>();
     }
