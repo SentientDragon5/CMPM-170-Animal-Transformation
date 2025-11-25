@@ -22,7 +22,7 @@ public class HumanoidController : GenericMoveController
     public float groundingDistance = 0.1f;
 
     [Header("Animation")]
-    public float animationSpeed = 0.5f;
+    public float animSmoothing = 0.1f;
 
     Animator anim;
     float turnAmount;
@@ -115,6 +115,7 @@ public class HumanoidController : GenericMoveController
     void UpdateAnimator()
     {
         float speed = rb.linearVelocity.magnitude / moveSpeed;
-        anim.SetFloat("Speed", speed);
+        float current_speed = Mathf.Lerp(anim.GetFloat("Speed"), speed, animSmoothing * Time.deltaTime);
+        anim.SetFloat("Speed", current_speed);
     }
 }
