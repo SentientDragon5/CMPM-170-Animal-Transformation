@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -35,13 +37,28 @@ public class SeashellPuzzle : MonoBehaviour
         }
         return true;
     }
-    void Start()
+
+    void OnTriggerEnter(Collider other)
     {
-        
+        if (currentRoutine != null)
+            currentRoutine = StartCoroutine(PlaySolution());
     }
 
-    void Update()
+    Coroutine currentRoutine;
+    
+    public List<SeashellNote> inWorld;
+    public List<SeashellNote> onDoor;
+    public float delay = 1;
+
+    IEnumerator PlaySolution()
     {
-        
+        foreach(var s in onDoor)
+        {
+            s.SetOn(true);
+            s.PlayNote();
+            yield return new WaitForSeconds(delay);
+            s.SetOn(false);
+        }
+        currentRoutine = null;
     }
 }

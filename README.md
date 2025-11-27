@@ -22,3 +22,5 @@ Prototype 4 for CMPM 170
 - Sound Effect by <a href="https://pixabay.com/users/u_c58whxla22-52684455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=422108">u_c58whxla22</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=422108">Pixabay</a>
 - Sound Effect by <a href="https://pixabay.com/users/u_c58whxla22-52684455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=422090">u_c58whxla22</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=422090">Pixabay</a>
 - https://catlikecoding.com/unity/tutorials/flow/texture-distortion/texturing/water-normal.png
+- "Door metallic Parking Garden villa" (https://skfb.ly/oTySN) by Mehdi Shahsavan is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+- "Seashell" (https://skfb.ly/6TJX6) by yaocheng is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
