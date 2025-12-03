@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SeashellPuzzle : MonoBehaviour
 {
+    public AudioSource victorySound;
     public string solution = "abcd";
     public string current = "";
     public Door door;
@@ -17,6 +18,7 @@ public class SeashellPuzzle : MonoBehaviour
         if (solution == current)
         {
             door.SetUnlocked(true);
+            victorySound.Play();
         }
         else
         {
@@ -25,6 +27,12 @@ public class SeashellPuzzle : MonoBehaviour
                 current = "";
                 Debug.Log("Wrong");
             }
+        }
+        
+        for (int i = 0; i < onDoor.Count; i++)
+        {
+            onDoor[i].SetOn( i < current.Length);
+            inWorld[i].SetOn(i < current.Length);
         }
     }
 
@@ -40,7 +48,7 @@ public class SeashellPuzzle : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (currentRoutine != null)
+        if (currentRoutine == null)
             currentRoutine = StartCoroutine(PlaySolution());
     }
 
@@ -60,5 +68,10 @@ public class SeashellPuzzle : MonoBehaviour
             s.SetOn(false);
         }
         currentRoutine = null;
+        for (int i = 0; i < onDoor.Count; i++)
+        {
+            onDoor[i].SetOn( i < current.Length);
+            inWorld[i].SetOn(i < current.Length);
+        }
     }
 }

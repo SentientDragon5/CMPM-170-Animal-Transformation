@@ -10,18 +10,20 @@ public class SeashellNote : MonoBehaviour
     public UnityEvent<string> onNotePlayed;
     public Color color;
 
-    SpriteRenderer rend;
+    MeshRenderer rend;
     Material mat;
 
     void Awake()
     {
-        rend = GetComponent<SpriteRenderer>();
+        rend = GetComponent<MeshRenderer>();
         mat = Instantiate(rend.sharedMaterial);
+        rend.sharedMaterial = mat;
         SetOn(false);
     }
     public void SetOn(bool on)
     {
         mat.color = color;
+        mat.SetColor("_Color", color);
         mat.SetColor("_EmissionColor", on ? color : Color.black);
     }
     void OnTriggerEnter(Collider collider)
