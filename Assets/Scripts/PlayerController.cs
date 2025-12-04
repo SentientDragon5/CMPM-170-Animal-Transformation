@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public int moveState = 0;
 
     public List<WaterVolume> waterBodyList;
+    public AudioReverbZone underwaterZone;
 
     void SwitchState(int newState)
     {
@@ -86,6 +87,16 @@ public class PlayerController : MonoBehaviour
         movementControllers[moveState].Move(move);
     }
 
-
+    public void AddWater(WaterVolume v)
+    {
+        waterBodyList.Add(v);
+        underwaterZone.enabled = waterBodyList.Count > 0;
+        
+    }
+    public void RemoveWater(WaterVolume v)
+    {
+        waterBodyList.Remove(v);
+        underwaterZone.enabled = waterBodyList.Count > 0;
+    }
 
 }

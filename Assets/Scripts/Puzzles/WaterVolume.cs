@@ -14,7 +14,7 @@ public class WaterVolume : MonoBehaviour
         // Debug.Log(other.gameObject);
         if (other.attachedRigidbody.TryGetComponent(out PlayerController player))
         {
-            player.waterBodyList.Add(this);
+            player.AddWater(this);
         }
 
     }
@@ -23,7 +23,7 @@ public class WaterVolume : MonoBehaviour
         // Debug.Log(other.gameObject);
         if (other.attachedRigidbody.TryGetComponent(out PlayerController player))
         {
-            player.waterBodyList.Remove(this);
+            player.RemoveWater(this);
         }
 
     }

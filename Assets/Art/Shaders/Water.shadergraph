@@ -935,7 +935,7 @@
         "r": 0.17036503553390504,
         "g": 0.6813377141952515,
         "b": 0.9182389378547669,
-        "a": 0.3294117748737335
+        "a": 0.06666667014360428
     },
     "isMainColor": false,
     "m_ColorMode": 0
@@ -1158,7 +1158,7 @@
     "m_Hidden": false,
     "m_PerRendererData": false,
     "m_customAttributes": [],
-    "m_Value": 1.0,
+    "m_Value": 0.05000000074505806,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -1913,7 +1913,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_Space": 0,
+    "m_Space": 2,
     "m_PositionSource": 0
 }
 
@@ -2478,7 +2478,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Smoothness",
     "m_StageCapability": 2,
-    "m_Value": 0.5,
+    "m_Value": 0.09000000357627869,
     "m_DefaultValue": 0.5,
     "m_Labels": []
 }
