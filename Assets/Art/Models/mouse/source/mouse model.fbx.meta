@@ -34,7 +34,7 @@ ModelImporter:
       name: jump
       takeName: jump
       internalID: -2993534804863918692
-      firstFrame: 0
+      firstFrame: 10.8
       lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
@@ -42,7 +42,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
