@@ -145,8 +145,19 @@ public class HumanoidController : GenericMoveController
         float speed = rb.linearVelocity.magnitude / moveSpeed;
         float current_speed = Mathf.Lerp(anim.GetFloat("Speed"), speed, animSmoothing * Time.deltaTime);
         anim.SetFloat("Speed", current_speed);
-        anim.SetBool("Grounded", CheckGrounded(out Vector3 normal));
+        var grounded = CheckGrounded(out Vector3 normal);
+        anim.SetBool("Grounded", grounded);
+        if (!movingAudio.isPlaying && grounded && speed > 0.1)
+        {
+            movingAudio.volume = speed * vol;
+        }
+        else
+        {
+            movingAudio.volume = 0;
+        }
     }
+    public AudioSource movingAudio;
+    public float vol = 0.2f;
 
     
 #if UNITY_EDITOR
