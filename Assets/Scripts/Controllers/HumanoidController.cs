@@ -73,6 +73,7 @@ public class HumanoidController : GenericMoveController
         }
         
         UpdateAnimator();
+        FixUp();
     }
     void GroundedMovement()
     {

@@ -86,6 +86,7 @@ public class CrabController : GenericMoveController
         }
         
         UpdateAnimator();
+        FixUp();
     }
 
     public override void JumpAction()

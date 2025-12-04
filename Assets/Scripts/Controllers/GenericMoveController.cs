@@ -67,7 +67,6 @@ public class GenericMoveController : MonoBehaviour
         }
         else
             gameObject.SetActive(false);
-        FixUp();
     }
 
     public void FixUp()
