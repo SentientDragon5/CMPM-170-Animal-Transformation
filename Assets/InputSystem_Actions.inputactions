@@ -577,7 +577,7 @@
                 {
                     "name": "negative",
                     "id": "54f5fbde-3f55-4d35-b62a-5b349cd89cb3",
-                    "path": "<Keyboard>/shift",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -880,6 +880,7 @@ GameObject:
   - component: {fileID: 2578041182358656701}
   - component: {fileID: 2845231650954876293}
   - component: {fileID: 4131984797183413998}
+  - component: {fileID: 7588766593174724687}
   m_Layer: 8
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -895,7 +896,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735313567032928200}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25340134, y: 0.00000006296652, z: -0.000000016494148, w: 0.9673613}
+  m_LocalRotation: {x: 0.25340134, y: 4.9784133e-17, z: -3.373181e-16, w: 0.9673613}
   m_LocalPosition: {x: 0, y: 2.25, z: -3.9999995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1106,6 +1107,36 @@ MonoBehaviour:
         DecelTime: 0
   PlayerIndex: -1
   AutoEnableInputs: 1
+--- !u!114 &7588766593174724687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735313567032928200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineDecollider
+  CameraRadius: 0.4
+  Decollision:
+    Enabled: 1
+    ObstacleLayers:
+      serializedVersion: 2
+      m_Bits: 129
+    UseFollowTarget:
+      Enabled: 0
+      YOffset: 0
+    Damping: 0.5
+    SmoothingTime: 0
+  TerrainResolution:
+    Enabled: 0
+    TerrainLayers:
+      serializedVersion: 2
+      m_Bits: 129
+    MaximumRaycast: 10
+    Damping: 0.5
 --- !u!1 &746932485243393664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,7 +1417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &805173986920163614
 Transform:
   m_ObjectHideFlags: 0
@@ -1419,7 +1450,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2fdafcea4814f4ba50b4c8377e95e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HumanoidController
-  moveSpeed: 5
+  dissolveMaterials:
+  - {fileID: 2100000, guid: d31a4cc6a4d61614a81931cf27090274, type: 2}
+  dissolveTime: 0.5
+  moveSpeed: 10
   standingTurnSpeed: 200
   movingTurnSpeed: 400
   jumpSpeed: 10
@@ -1432,6 +1466,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   groundingDistance: 0.1
+  riseSpeed: 200
+  swimSpeed: 5
+  surfaceOffset: -1
+  animSmoothing: 10
 --- !u!136 &5822608339033898074
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1448,13 +1486,13 @@ CapsuleCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.51602185
   m_Height: 2.2090783
   m_Direction: 2
-  m_Center: {x: 0, y: 0.38555825, z: -0.17098927}
+  m_Center: {x: 0, y: 0.52, z: -0.17098927}
 --- !u!95 &5741882975146633205
 Animator:
   serializedVersion: 7
@@ -5550,7 +5588,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d61641681c98a7142afd9f74585588d0, type: 2}
+  - {fileID: 2100000, guid: d31a4cc6a4d61614a81931cf27090274, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

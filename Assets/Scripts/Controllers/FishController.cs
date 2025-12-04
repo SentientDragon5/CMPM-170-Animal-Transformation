@@ -2,13 +2,37 @@ using UnityEngine;
 
 public class FishController : GenericMoveController
 {    
+    [Header("Walking")]
     public float moveSpeed = 5;
-    public float jumpSpeed = 10;
-    public bool inWater = false;
-    public LayerMask waterLayer = 16;
-    public LayerMask enviromentLayer = 128;
+    public float movingTurnSpeed = 400;
 
-    
+    [Header("Jumping")]
+    public float jumpSpeed = 10;
+    public float jumpMinTime = 0.2f;
+    public float randomSpeed = 10;
+
+    [Header("Falling")]
+    public float airSpeed = 5;
+    public float airControl = 0.1f;
+    public float airTurnSpeed = 200;
+    public float gravityScale = 2;
+
+    [Header("Grounding")]
+    public LayerMask enviromentLayer = 128; // layer 7 so 2 ^ 7
+    public float groundingDistance = 0.3f;
+
+
+    [Header("Watering")]
+    public LayerMask waterLayer = 16; // layer 4 so 2 ^ 4    
+    public float surfaceOffset = -0.5f;
+
+    [Header("Animation")]
+    public float animSmoothing = 0.1f;
+
+    float lastJumpTime;
+
+    Vector3 move;
+    Transform cam => Camera.main.transform;
     Animator anim;
     public override void Awake()
     {
@@ -17,61 +41,94 @@ public class FishController : GenericMoveController
     }
     public override void Move(Vector3 moveInput)
     {
-        // called on update, so we use this to move the player
-        Vector3 groundMovement = new Vector3(moveInput.x, 0, moveInput.z);
-        if (CheckWater(out Vector3 wnormal))
+        // Vector3 move = cam.forward * moveInput.z + cam.right * moveInput.x + Vector3.up * moveInput.y;
+        
+        move = new Vector3(moveInput.x, 0, moveInput.z);
+        if (move.magnitude > 1f) move.Normalize();
+        move = rb.transform.InverseTransformDirection(move);
+        move = rb.transform.TransformVector(move);
+
+        if(!InWater) 
+            FixUp();
+
+        if (InWater)
         {
-            Vector3 move = groundMovement * moveSpeed;
-            rb.linearVelocity = Vector3.ProjectOnPlane(move, wnormal);
+            Quaternion lookRot = Quaternion.LookRotation(cam.forward, Vector3.up);
+            lookRot = Quaternion.RotateTowards(rb.rotation, lookRot, movingTurnSpeed * Time.deltaTime);
+            rb.MoveRotation(lookRot);
+            rb.linearVelocity = moveInput * moveSpeed;
         }
         else if (CheckGrounded(out Vector3 normal))
         {
-
+            // bounce off ground in a random direction
+            JumpAction();
         }
         else
         {
-            rb.linearVelocity += Physics.gravity;
+            // fall as normal
+            AirborneMovment(moveInput);
         }
-        
-        
+
         UpdateAnimator();
+    }
+    void AirborneMovment(Vector3 moveInput)
+    {
+        // add gravity to our velocity
+        // slowly air strafe in a controlled way
+        move = Vector3.MoveTowards(rb.linearVelocity, move * airSpeed, airControl * moveInput.magnitude);
+        move.y = rb.linearVelocity.y;
+        rb.linearVelocity += gravityScale * Physics.gravity * Time.deltaTime;
+        // skip rotation
+        // rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("hit " + InWater);
+        if (InWater)
+            return;
+        foreach(var c in collision.contacts)
+        {
+            if (c.point.y < transform.position.y)
+            {
+                JumpAction();
+            }
+        }
     }
 
     public override void JumpAction()
     {
-        if (CheckGrounded(out Vector3 normal))
+        if (CheckGrounded(out Vector3 normal) && (Time.time - lastJumpTime > jumpMinTime))
         {
-            rb.linearVelocity += Vector3.up * jumpSpeed;
+            lastJumpTime = Time.time;
+            rb.linearVelocity += (normal + new Vector3(Random.Range(-1,1),0,Random.Range(-1,1)) * randomSpeed) * jumpSpeed;
         }
     }
-
-    protected bool CheckWater(out Vector3 normal)
-    {
-        normal = Vector3.zero;
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 0.1f, waterLayer))
-        {
-            normal = hit.normal;
-            return true;
-        }
-        return false;
-    }
-
 
     protected bool CheckGrounded(out Vector3 normal)
     {
         normal = Vector3.zero;
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 0.1f, enviromentLayer))
+        if (Time.time - lastJumpTime < jumpMinTime)
         {
+            Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.white);
+            return false;
+        }
+
+        if (Physics.Raycast(transform.position + Vector3.up * groundingDistance/2f, Vector3.down, out RaycastHit hit, groundingDistance, enviromentLayer))
+        {
+            Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.green);
             normal = hit.normal;
             return true;
         }
+        Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.red);
         return false;
     }
-
     
     void UpdateAnimator()
     {
         float speed = rb.linearVelocity.magnitude / moveSpeed;
-        anim.SetFloat("Speed", speed);
+        if (InWater)
+            speed = 2;
+        float current_speed = Mathf.Lerp(anim.GetFloat("Speed"), speed, animSmoothing * Time.deltaTime);
+        anim.SetFloat("Speed", current_speed * 0.9f + 0.1f);
     }
 }

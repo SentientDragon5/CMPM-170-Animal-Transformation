@@ -12,17 +12,17 @@ public class PlayerController : MonoBehaviour
     public int moveState = 0;
 
     public List<WaterVolume> waterBodyList;
+    public AudioReverbZone underwaterZone;
 
     void SwitchState(int newState)
     {
-        this.waterBodyList.Clear();
-        Debug.Log("Switching state to " + newState);
+        // Debug.Log("Switching state to " + newState);
         if (moveState == newState)
             return;
-
-        movementControllers[moveState].Exit();
+        ResetWater();
+        movementControllers[moveState].Exit(true);
         moveState = newState;
-        movementControllers[moveState].Enter();
+        movementControllers[moveState].Enter(true);
     }
 
     void Start()
@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
             else
                 movementControllers[i].Exit();
         }
+        ResetWater();
     }
 
     void OnEnable()
@@ -77,8 +78,8 @@ public class PlayerController : MonoBehaviour
 
         Transform camTransform = Camera.main.transform;
         // local camera forward and right, but global up
-        Vector3 camForward = new Vector3(camTransform.forward.x, 0, camTransform.forward.z).normalized;
-        Vector3 camRight = new Vector3(camTransform.right.x, 0, camTransform.right.z).normalized;
+        Vector3 camForward = camTransform.forward;// new Vector3(camTransform.forward.x, 0, camTransform.forward.z).normalized;
+        Vector3 camRight = camTransform.right;//new Vector3(camTransform.right.x, 0, camTransform.right.z).normalized;
         Vector3 move = moveInput.y * camForward + moveInput.x * camRight + moveInput.z * Vector3.up;
         if (move.magnitude > 1)
             move.Normalize();
@@ -86,6 +87,20 @@ public class PlayerController : MonoBehaviour
         movementControllers[moveState].Move(move);
     }
 
-
-
+    public void AddWater(WaterVolume v)
+    {
+        waterBodyList.Add(v);
+        underwaterZone.enabled = waterBodyList.Count > 0;
+        
+    }
+    public void RemoveWater(WaterVolume v)
+    {
+        waterBodyList.Remove(v);
+        underwaterZone.enabled = waterBodyList.Count > 0;
+    }
+    public void ResetWater()
+    {
+        waterBodyList.Clear();
+        underwaterZone.enabled = waterBodyList.Count > 0;
+    }
 }
