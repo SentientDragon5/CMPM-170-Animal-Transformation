@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CrabController : GenericMoveController
@@ -79,10 +80,11 @@ public class CrabController : GenericMoveController
         }
         else
         {
+            // Airborne movement
             move.y = rb.linearVelocity.y;
             rb.linearVelocity += gravityScale * Physics.gravity * Time.deltaTime;
             rb.linearVelocity = Vector3.MoveTowards(rb.linearVelocity, move * airSpeed, airControl * moveInput.magnitude);
-            rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
+            rb.MoveRotation(CorrectUpRotation() * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
         }
         
         UpdateAnimator();
@@ -97,22 +99,27 @@ public class CrabController : GenericMoveController
         }
     }
 
+    public float groundingRadius = 0.1f;
+    public List<Transform> groundingOrigins;
     protected bool CheckGrounded(out Vector3 normal)
     {
         normal = Vector3.zero;
-        if (Time.time - lastJumpTime < jumpMinTime)
+        foreach (Transform t in groundingOrigins)
         {
-            Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * 0.2f, Color.white);
-            return false;
-        }
+            if (Time.time - lastJumpTime < jumpMinTime)
+            {
+                Debug.DrawRay(t.position, Vector3.down * 0.2f, Color.white);
+                return false;
+            }
 
-        if (Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, out RaycastHit hit, 0.2f, enviromentLayer))
-        {
-            Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * 0.2f, Color.green);
-            normal = hit.normal;
-            return true;
+            if (Physics.SphereCast(t.position, groundingRadius, Vector3.down, out RaycastHit hit, 0.2f, enviromentLayer))
+            {
+                Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * 0.2f, Color.green);
+                normal = hit.normal;
+                return true;
+            }
+            Debug.DrawRay(t.position, Vector3.down * 0.2f, Color.red);
         }
-        Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * 0.2f, Color.red);
         return false;
     }
 

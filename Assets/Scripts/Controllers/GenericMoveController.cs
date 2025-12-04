@@ -67,19 +67,39 @@ public class GenericMoveController : MonoBehaviour
         }
         else
             gameObject.SetActive(false);
-        FixUp();
     }
 
     public void FixUp()
     {
         // Self right the character if it turned on its side.
+        // StartCoroutine(FixUpDelay());
+    }
+
+    IEnumerator FixUpDelay()
+    {
+        yield return new WaitForFixedUpdate();
         if (rb == null)
             rb = transform.parent.GetComponent<Rigidbody>();
+        for (int i=0; i<100; i++)
+        {
+            Vector3 flatForward = Vector3.ProjectOnPlane(transform.forward, Vector3.up).normalized;
+            Quaternion targetRotation = Quaternion.LookRotation(flatForward, Vector3.up);
+            Quaternion smoothRot = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.fixedDeltaTime);
+            rb.MoveRotation(targetRotation);
+            rb.transform.rotation = targetRotation;
+            rb.transform.eulerAngles = new Vector3(0,rb.transform.eulerAngles.y,0);
+            Debug.Log("Up : " +  rb.transform.up);
+            yield return new WaitForFixedUpdate();
+        }
+        
+    }
+    protected Quaternion CorrectUpRotation()
+    {
         Vector3 flatForward = Vector3.ProjectOnPlane(transform.forward, Vector3.up).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(flatForward, Vector3.up);
-        Quaternion smoothRot = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.fixedDeltaTime);
-        rb.MoveRotation(smoothRot);
+        return targetRotation;
     }
+
     [Header("Dissolve")]
     public List<Material> dissolveMaterials;
     public float dissolveTime = 0.1f;
