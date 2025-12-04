@@ -30,3 +30,4 @@ Prototype 4 for CMPM 170
 - "Seashell" (https://skfb.ly/6TJX6) by yaocheng is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 - Sound Effect by <a href="https://pixabay.com/users/superpuyofãns1234-45913026/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=404167">Sophia Conçeição</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=404167">Pixabay</a>
 - "Animated Kelp" (https://skfb.ly/pqWRG) by JosephWPugsley is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+- Music by <a href="https://pixabay.com/users/sergepavkinmusic-6130722/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=333506">Sergii Pavkin</a> from <a href="https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=333506">Pixabay</a>

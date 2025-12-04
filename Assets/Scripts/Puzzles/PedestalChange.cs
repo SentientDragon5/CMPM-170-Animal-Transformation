@@ -19,7 +19,7 @@ public class PedestalChange : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-            Debug.Log(other.gameObject.name);
+            // Debug.Log(other.gameObject.name);
         if (other.attachedRigidbody.TryGetComponent(out PlayerController pc))
         {
             pc.SwitchState(formType);
