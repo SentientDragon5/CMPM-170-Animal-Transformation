@@ -16,11 +16,10 @@ public class PlayerController : MonoBehaviour
 
     void SwitchState(int newState)
     {
-        this.waterBodyList.Clear();
         // Debug.Log("Switching state to " + newState);
         if (moveState == newState)
             return;
-
+        ResetWater();
         movementControllers[moveState].Exit(true);
         moveState = newState;
         movementControllers[moveState].Enter(true);
@@ -35,6 +34,7 @@ public class PlayerController : MonoBehaviour
             else
                 movementControllers[i].Exit();
         }
+        ResetWater();
     }
 
     void OnEnable()
@@ -98,5 +98,9 @@ public class PlayerController : MonoBehaviour
         waterBodyList.Remove(v);
         underwaterZone.enabled = waterBodyList.Count > 0;
     }
-
+    public void ResetWater()
+    {
+        waterBodyList.Clear();
+        underwaterZone.enabled = waterBodyList.Count > 0;
+    }
 }
