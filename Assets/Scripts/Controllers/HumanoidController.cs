@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class HumanoidController : GenericMoveController
 {    
@@ -115,27 +116,27 @@ public class HumanoidController : GenericMoveController
         }
     }
 
-    // this function gets whether the player is grounded. if so it also gives the normal of the ground, otherwise it gives Vector3.zero
+    public float groundingRadius = 0.1f;
+    public List<Transform> groundingOrigins;
     protected bool CheckGrounded(out Vector3 normal)
     {
-        // default normal direction
         normal = Vector3.zero;
-
-        // If we just jumped, we know we are not on the ground. 
-        if (Time.time - lastJumpTime < jumpMinTime)
+        foreach (Transform t in groundingOrigins)
         {
-            Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.white);
-            return false;
-        }
+            if (Time.time - lastJumpTime < jumpMinTime)
+            {
+                Debug.DrawRay(t.position, Vector3.down * 0.2f, Color.white);
+                return false;
+            }
 
-        // check to see if the ground below us is there, if so also return the normal
-        if (Physics.Raycast(transform.position + Vector3.up * groundingDistance/2f, Vector3.down, out RaycastHit hit, groundingDistance, enviromentLayer))
-        {
-            Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.green);
-            normal = hit.normal;
-            return true;
+            if (Physics.SphereCast(t.position, groundingRadius, Vector3.down, out RaycastHit hit, 0.2f, enviromentLayer))
+            {
+                Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * 0.2f, Color.green);
+                normal = hit.normal;
+                return true;
+            }
+            Debug.DrawRay(t.position, Vector3.down * 0.2f, Color.red);
         }
-        Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.red);
         return false;
     }
 
