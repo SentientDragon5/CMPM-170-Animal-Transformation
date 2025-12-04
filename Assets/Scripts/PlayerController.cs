@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public List<WaterVolume> waterBodyList;
     public AudioReverbZone underwaterZone;
 
-    public void SwitchState(int newState)
+    void SwitchState(int newState)
     {
         // Debug.Log("Switching state to " + newState);
         if (moveState == newState)

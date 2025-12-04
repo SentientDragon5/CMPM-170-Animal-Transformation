@@ -1,8 +1,6 @@
 # CMPM-170-Animal-Transformation
 Prototype 4 for CMPM 170
 
-## [Play!](https://sentientdragon5.github.io/CMPM-170-Animal-Transformation/)
-
 ## TODO
 - [x] create generic movment controller
 - [x] create player controller

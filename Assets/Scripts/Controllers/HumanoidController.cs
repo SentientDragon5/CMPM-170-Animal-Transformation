@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class HumanoidController : GenericMoveController
 {    
@@ -92,7 +91,7 @@ public class HumanoidController : GenericMoveController
         move.y = rb.linearVelocity.y;
         rb.linearVelocity += gravityScale * Physics.gravity * Time.deltaTime;
         // rotate the player by turn amount
-        rb.MoveRotation(CorrectUpRotation() * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
+        rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
     }
     void WaterMovement()
     {
@@ -102,7 +101,6 @@ public class HumanoidController : GenericMoveController
         float rise = Mathf.MoveTowards(rb.linearVelocity.y, bouyancy, riseSpeed * Time.deltaTime); 
         // Debug.Log("buoy "+ bouyancy + " rise " + rise);
         rb.linearVelocity = new Vector3(move.x * moveSpeed, rise, move.z * moveSpeed);
-        rb.MoveRotation(CorrectUpRotation());
     }
 
     // called by the player controller when the jump input is pressed
@@ -116,27 +114,27 @@ public class HumanoidController : GenericMoveController
         }
     }
 
-    public float groundingRadius = 0.1f;
-    public List<Transform> groundingOrigins;
+    // this function gets whether the player is grounded. if so it also gives the normal of the ground, otherwise it gives Vector3.zero
     protected bool CheckGrounded(out Vector3 normal)
     {
+        // default normal direction
         normal = Vector3.zero;
-        foreach (Transform t in groundingOrigins)
-        {
-            if (Time.time - lastJumpTime < jumpMinTime)
-            {
-                Debug.DrawRay(t.position, Vector3.down * 0.2f, Color.white);
-                return false;
-            }
 
-            if (Physics.SphereCast(t.position, groundingRadius, Vector3.down, out RaycastHit hit, 0.2f, enviromentLayer))
-            {
-                Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * 0.2f, Color.green);
-                normal = hit.normal;
-                return true;
-            }
-            Debug.DrawRay(t.position, Vector3.down * 0.2f, Color.red);
+        // If we just jumped, we know we are not on the ground. 
+        if (Time.time - lastJumpTime < jumpMinTime)
+        {
+            Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.white);
+            return false;
         }
+
+        // check to see if the ground below us is there, if so also return the normal
+        if (Physics.Raycast(transform.position + Vector3.up * groundingDistance/2f, Vector3.down, out RaycastHit hit, groundingDistance, enviromentLayer))
+        {
+            Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.green);
+            normal = hit.normal;
+            return true;
+        }
+        Debug.DrawRay(transform.position + Vector3.up * groundingDistance/2f, Vector3.down * groundingDistance, Color.red);
         return false;
     }
 
