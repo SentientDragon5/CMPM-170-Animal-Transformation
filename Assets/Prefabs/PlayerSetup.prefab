@@ -1330,6 +1330,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 13400000, guid: 92312e38e73cd944d8316feb0013a46a, type: 2}
     - target: {fileID: 8864212789450974979, guid: 4354551a153f6b94084aa68891bf9023, type: 3}
+      propertyPath: surfaceOffset
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864212789450974979, guid: 4354551a153f6b94084aa68891bf9023, type: 3}
       propertyPath: groundingDistance
       value: 0.4
       objectReference: {fileID: 0}
