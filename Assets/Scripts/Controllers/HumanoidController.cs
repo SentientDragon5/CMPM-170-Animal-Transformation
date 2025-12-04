@@ -92,7 +92,7 @@ public class HumanoidController : GenericMoveController
         move.y = rb.linearVelocity.y;
         rb.linearVelocity += gravityScale * Physics.gravity * Time.deltaTime;
         // rotate the player by turn amount
-        rb.MoveRotation(transform.rotation * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
+        rb.MoveRotation(CorrectUpRotation() * Quaternion.AngleAxis(turnAmount * airTurnSpeed * Time.deltaTime, Vector3.up));
     }
     void WaterMovement()
     {
@@ -102,6 +102,7 @@ public class HumanoidController : GenericMoveController
         float rise = Mathf.MoveTowards(rb.linearVelocity.y, bouyancy, riseSpeed * Time.deltaTime); 
         // Debug.Log("buoy "+ bouyancy + " rise " + rise);
         rb.linearVelocity = new Vector3(move.x * moveSpeed, rise, move.z * moveSpeed);
+        rb.MoveRotation(CorrectUpRotation());
     }
 
     // called by the player controller when the jump input is pressed
