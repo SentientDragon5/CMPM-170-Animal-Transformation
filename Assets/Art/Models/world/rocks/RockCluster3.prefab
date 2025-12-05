@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 49062423280180420}
   - component: {fileID: 1420280316003633919}
   - component: {fileID: 6254591918742186327}
+  - component: {fileID: 9213119205575865067}
   m_Layer: 0
   m_Name: RiverRock_04
   m_TagString: Untagged
@@ -89,6 +90,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9213119205575865067
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230232070836077334}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6292117840619853092, guid: bce8d3a290606e34cbbbc7f8f00d2dad, type: 3}
 --- !u!1 &1435197505960050490
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +158,7 @@ GameObject:
   - component: {fileID: 355118838477380334}
   - component: {fileID: 87681326888196224}
   - component: {fileID: 3389735914898806015}
+  - component: {fileID: 5062318870720177676}
   m_Layer: 0
   m_Name: RiverRock_02
   m_TagString: Untagged
@@ -190,7 +214,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ec79d863d05c304ba9e6927c75488ad, type: 2}
+  - {fileID: 2100000, guid: 9d5d5ecd8aa907745b1580e6fad87b36, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -213,6 +237,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5062318870720177676
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2788687949061737191}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5382894429695436758, guid: bce8d3a290606e34cbbbc7f8f00d2dad, type: 3}
 --- !u!1 &4398848027625971661
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +270,7 @@ GameObject:
   - component: {fileID: 7900920390962224387}
   - component: {fileID: 8565357573585209077}
   - component: {fileID: 4320008583706266387}
+  - component: {fileID: 2629020279887664003}
   m_Layer: 0
   m_Name: RiverRock_01
   m_TagString: Untagged
@@ -302,6 +349,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2629020279887664003
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398848027625971661}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8454987719608490112, guid: bce8d3a290606e34cbbbc7f8f00d2dad, type: 3}
 --- !u!1 &6659253094551594877
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,6 +382,7 @@ GameObject:
   - component: {fileID: 4309419208922353882}
   - component: {fileID: 4553645652063163596}
   - component: {fileID: 7940250877702890502}
+  - component: {fileID: 5220071772637590936}
   m_Layer: 0
   m_Name: RiverRock_03
   m_TagString: Untagged
@@ -391,3 +461,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5220071772637590936
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659253094551594877}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8451296471109041148, guid: bce8d3a290606e34cbbbc7f8f00d2dad, type: 3}

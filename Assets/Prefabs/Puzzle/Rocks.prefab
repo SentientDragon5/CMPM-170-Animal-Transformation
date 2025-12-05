@@ -440,10 +440,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockCluster3
       objectReference: {fileID: 0}
-    - target: {fileID: 3389735914898806015, guid: 2c7b23b7d919b0845b236a5a04874456, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 9d5d5ecd8aa907745b1580e6fad87b36, type: 2}
     - target: {fileID: 8484887506513303938, guid: 2c7b23b7d919b0845b236a5a04874456, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.9
